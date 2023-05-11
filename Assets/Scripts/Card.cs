@@ -4,18 +4,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 public struct Card
 {
 
     private CardSuit suit;
     private int value;
     
-    CardSuit getCardSuit()
+    public CardSuit getCardSuit()
     {
         return suit;
     }
 
-    int getCardValue()
+    public int getCardValue()
     {
         return value;
     }
@@ -27,8 +29,8 @@ public struct Card
     public void drawCard(Card[] drawnCards, int x)
     {
         int randomFace;
-        randomFace = Random.Range(0, 5);
-        value = Random.Range(0, 14);
+        randomFace = Random.Range(1, 5);
+        value = Random.Range(1, 14);
         switch (randomFace)
         {
             case 1:  
@@ -63,5 +65,15 @@ public struct Card
         }
         else
             drawCard(drawnCards, x);
+    }
+
+    public void displayCard(Text display, Card cardToDisplay)
+    {
+        display.text += cardToDisplay.getCardSuit().ToString() + " " + cardToDisplay.getCardValue() + " ";
+    }
+
+    public void clearDisplay(Text display)
+    {
+        display.text = "";
     }
 }

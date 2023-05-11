@@ -6,17 +6,17 @@ public class PlayerBet : MonoBehaviour
 {
     int wallet;
 
-    void initialize()
+    void start()
     {
         wallet = 0;
     }
 
-    void addMoney(int amount)
+    public void addMoney(int amount)
     {
         wallet += amount;
     }
 
-    void removeMonet(int amount)
+    public void removeMoney(int amount)
     {
         wallet -= amount; ;
     }

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerHand : MonoBehaviour
 {
     private Card[] hand = new Card[2];
+    [SerializeField]
+    Text display;
     TableHand TH;
 
     public void drawCards()
@@ -22,6 +25,8 @@ public class PlayerHand : MonoBehaviour
             hand[i].drawCard(cardsInPlay, numCardsInPlay);
             TH.addCard(hand[i]);
         }
+
+        showCards();
     }
 
     public Card getCard(int num)
@@ -32,6 +37,13 @@ public class PlayerHand : MonoBehaviour
     public void assignTable(TableHand newTH)
     {
         TH = newTH;
+    }
+
+    public void showCards()
+    {
+        hand[0].clearDisplay(display);
+        hand[0].displayCard(display, hand[0]);
+        hand[1].displayCard(display, hand[1]);
     }
 
 }
