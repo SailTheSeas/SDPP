@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/SDPP/Library/
-/SDPP/Temp/
-/SDPP/obj/
-/SDPP/Build/
-/SDPP/Builds/
-/SDPP/Logs/
-/SDPP/UserSettings/
+/Library/
+/Temp/
+/obj/
+/Build/
+/Builds/
+/Logs/
+/UserSettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
