@@ -1,13 +1,13 @@
-using Mirror;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class ChatBehaviour : NetworkBehaviour
 {
-    [SerializeField] private Text chatText = null;
-    [SerializeField] private InputField inputField = null;
-    [SerializeField] private GameObject canvas = null;
+    [SerializeField] private Text chatText;
+    [SerializeField] private InputField inputField;
+    [SerializeField] private GameObject canvas;
 
     private static event Action<string> OnMessage;
 
