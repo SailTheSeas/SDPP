@@ -1,6 +1,14 @@
+<<<<<<< Updated upstream
 {
     "name": "Unity.2D.Common.Runtime",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": []
+=======
+{
+    "name": "Unity.2D.Common.Runtime",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": []
+>>>>>>> Stashed changes
 }

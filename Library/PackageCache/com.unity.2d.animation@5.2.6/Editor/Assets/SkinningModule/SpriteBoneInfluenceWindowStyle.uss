@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 SpriteBoneInfluenceWindow
 {
@@ -13,3 +14,20 @@ SpriteBoneInfluenceWindowTreeViewWidget
 {
     flex: 1;
 }
+=======
+
+SpriteBoneInfluenceWindow
+{
+    height: 200px;
+}
+
+SpriteBoneInfluenceWindowListWidget
+{
+    flex: 1;
+}
+
+SpriteBoneInfluenceWindowTreeViewWidget
+{
+    flex: 1;
+}
+>>>>>>> Stashed changes

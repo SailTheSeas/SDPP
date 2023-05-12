@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 BoneReparentToolWindow {
     height: 300px;
 }
@@ -5,3 +6,12 @@ BoneReparentToolWindow {
 BoneReparentToolView{
     flex : 1;
 }
+=======
+BoneReparentToolWindow {
+    height: 300px;
+}
+
+BoneReparentToolView{
+    flex : 1;
+}
+>>>>>>> Stashed changes

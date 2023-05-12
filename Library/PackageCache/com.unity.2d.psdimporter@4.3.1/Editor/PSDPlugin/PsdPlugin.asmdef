@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
     "name": "PsdPlugin",
     "optionalUnityReferences": [],
@@ -7,3 +8,14 @@
     "excludePlatforms": [],
     "allowUnsafeCode": true
 }
+=======
+{
+    "name": "PsdPlugin",
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true
+}
+>>>>>>> Stashed changes

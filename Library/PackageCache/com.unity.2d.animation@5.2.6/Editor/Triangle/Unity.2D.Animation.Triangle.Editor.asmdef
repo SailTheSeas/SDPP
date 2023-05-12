@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
     "name": "Unity.2D.Animation.Triangle.Editor",
     "rootNamespace": "",
@@ -13,4 +14,21 @@
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
+=======
+{
+    "name": "Unity.2D.Animation.Triangle.Editor",
+    "rootNamespace": "",
+    "references": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+>>>>>>> Stashed changes
 }

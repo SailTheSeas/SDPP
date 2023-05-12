@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 apiRules:
   - exclude:
       uidRegex: UnityEngine\.U2D\.Bezier*
@@ -10,4 +11,18 @@ apiRules:
       type: Type
   - exclude:
       uidRegex: UnityEditor\.U2D*
+=======
+apiRules:
+  - exclude:
+      uidRegex: UnityEngine\.U2D\.Bezier*
+      type: Type 
+  - exclude:
+      uidRegex: UnityEngine\.U2D\.Spline*
+      type: Type
+  - exclude:
+      uidRegex: UnityEngine\.U2D\.SpriteShape*
+      type: Type
+  - exclude:
+      uidRegex: UnityEditor\.U2D*
+>>>>>>> Stashed changes
       type: Type

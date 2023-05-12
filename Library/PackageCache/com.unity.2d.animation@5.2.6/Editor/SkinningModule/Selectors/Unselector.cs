@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 using UnityEngine;
 
 namespace UnityEditor.U2D.Animation
@@ -12,3 +13,19 @@ namespace UnityEditor.U2D.Animation
         }
     }
 }
+=======
+using UnityEngine;
+
+namespace UnityEditor.U2D.Animation
+{
+    internal class Unselector<T> : ISelector<T>
+    {
+        public ISelection<T> selection { get; set; }
+
+        public void Select()
+        {
+            selection.Clear();
+        }
+    }
+}
+>>>>>>> Stashed changes

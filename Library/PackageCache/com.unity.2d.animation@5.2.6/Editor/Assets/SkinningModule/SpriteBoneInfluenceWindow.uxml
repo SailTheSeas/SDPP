@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?xml version="1.0" encoding="utf-8"?>
 <UXML xmlns:ui="UnityEngine.UIElements" xmlns:eui="UnityEditor.UIElements" xmlns:aui="UnityEditor.U2D.Animation">
     <aui:SpriteBoneInfluenceWindow name="SpriteBoneInfluenceWindow" picking-mode="Ignore">
@@ -6,3 +7,13 @@
     </ui:PopupWindow>
   </aui:SpriteBoneInfluenceWindow>
 </UXML>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<UXML xmlns:ui="UnityEngine.UIElements" xmlns:eui="UnityEditor.UIElements" xmlns:aui="UnityEditor.U2D.Animation">
+    <aui:SpriteBoneInfluenceWindow name="SpriteBoneInfluenceWindow" picking-mode="Ignore">
+    <ui:PopupWindow name="PopupWindow" text="">
+      <aui:SpriteBoneInfluenceListWidget/>
+    </ui:PopupWindow>
+  </aui:SpriteBoneInfluenceWindow>
+</UXML>
+>>>>>>> Stashed changes

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
     "name": "Unity.2D.PixelPerfect",
     "references": [],
@@ -10,4 +11,18 @@
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
+=======
+{
+    "name": "Unity.2D.PixelPerfect",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+>>>>>>> Stashed changes
 }

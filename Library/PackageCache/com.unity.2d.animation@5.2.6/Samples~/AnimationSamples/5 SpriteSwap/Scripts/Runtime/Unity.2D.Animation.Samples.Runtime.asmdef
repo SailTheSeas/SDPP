@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
     "name": "Unity.2D.Animation.Samples.Runtime",
     "references": [
@@ -14,4 +15,22 @@
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
+=======
+{
+    "name": "Unity.2D.Animation.Samples.Runtime",
+    "references": [
+        "UnityEngine.UI",
+        "Unity.2D.Animation.Runtime",
+        "Unity.2D.IK.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+>>>>>>> Stashed changes
 }

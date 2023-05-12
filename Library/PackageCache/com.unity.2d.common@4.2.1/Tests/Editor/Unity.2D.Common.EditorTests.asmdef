@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
     "name": "Unity.2D.Common.EditorTests",
     "references": [
@@ -17,4 +18,25 @@
         "UNITY_INCLUDE_TESTS"
     ],
     "versionDefines": []
+=======
+{
+    "name": "Unity.2D.Common.EditorTests",
+    "references": [
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": []
+>>>>>>> Stashed changes
 }

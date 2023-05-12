@@ -1,6 +1,14 @@
+<<<<<<< Updated upstream
 root = true
 
 [*]
 indent_style = space
 indent_size = 2
+=======
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+>>>>>>> Stashed changes
 end_of_line = lf

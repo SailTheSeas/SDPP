@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 apiRules:
   - exclude:
       uid: UnityEngine.U2D.Animation.PositionVertex
+=======
+apiRules:
+  - exclude:
+      uid: UnityEngine.U2D.Animation.PositionVertex
+>>>>>>> Stashed changes
       type: Struct

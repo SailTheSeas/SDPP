@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 using System;
 
 namespace UnityEditor.TestTools.TestRunner.TestRun
@@ -6,4 +7,14 @@ namespace UnityEditor.TestTools.TestRunner.TestRun
     {
         
     }
+=======
+using System;
+
+namespace UnityEditor.TestTools.TestRunner.TestRun
+{
+    internal class TestRunCanceledException : Exception
+    {
+        
+    }
+>>>>>>> Stashed changes
 }

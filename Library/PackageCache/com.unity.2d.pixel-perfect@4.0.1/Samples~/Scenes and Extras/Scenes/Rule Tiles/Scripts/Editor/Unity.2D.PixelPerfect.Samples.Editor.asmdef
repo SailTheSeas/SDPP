@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
     "name": "Unity.2D.PixelPerfect.Samples.Editor",
     "references": [
@@ -13,4 +14,21 @@
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": []
+=======
+{
+    "name": "Unity.2D.PixelPerfect.Samples.Editor",
+    "references": [
+        "GUID:5c401abef5fdf4442be445501720cde0"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+>>>>>>> Stashed changes
 }

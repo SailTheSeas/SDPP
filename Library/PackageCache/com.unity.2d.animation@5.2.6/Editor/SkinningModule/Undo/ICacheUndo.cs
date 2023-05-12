@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 namespace UnityEditor.U2D.Animation
 {
     internal interface ICacheUndo
@@ -9,3 +10,16 @@ namespace UnityEditor.U2D.Animation
         void EndUndoOperation();
     }
 }
+=======
+namespace UnityEditor.U2D.Animation
+{
+    internal interface ICacheUndo
+    {
+        IUndo undoOverride { get; set; }
+        bool isUndoOperationSet { get; }
+        void IncrementCurrentGroup();
+        void BeginUndoOperation(string name);
+        void EndUndoOperation();
+    }
+}
+>>>>>>> Stashed changes

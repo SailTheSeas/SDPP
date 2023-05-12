@@ -135,6 +135,10 @@ m_PackageAssets:
         - 7.0.8
         - 7.0.9
         - 7.0.10
+<<<<<<< Updated upstream
+=======
+        - 7.0.11
+>>>>>>> Stashed changes
         - 8.0.0-pre.3
         - 8.0.0-pre.4
         - 8.0.0
@@ -148,9 +152,17 @@ m_PackageAssets:
         - 9.0.0
         - 9.0.1
         - 9.0.2
+<<<<<<< Updated upstream
         - 10.0.0-pre.1
         - 10.0.0-pre.2
         - 10.0.0
+=======
+        - 9.0.3
+        - 10.0.0-pre.1
+        - 10.0.0-pre.2
+        - 10.0.0
+        - 10.0.1
+>>>>>>> Stashed changes
         compatible:
         - 5.2.0
         - 5.2.1
