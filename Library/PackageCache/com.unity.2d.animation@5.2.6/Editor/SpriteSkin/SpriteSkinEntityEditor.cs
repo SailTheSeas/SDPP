@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 using UnityEngine;
 
 namespace UnityEditor.U2D.Animation
@@ -18,24 +17,3 @@ namespace UnityEditor.U2D.Animation
 #endif
 
 }
-=======
-using UnityEngine;
-
-namespace UnityEditor.U2D.Animation
-{
-
-#if ENABLE_ENTITIES
-
-    [CustomEditor(typeof(SpriteSkinEntity))]
-    [CanEditMultipleObjects]
-    class SpriteSkinEntityEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-          
-        }
-    }
-#endif
-
-}
->>>>>>> Stashed changes

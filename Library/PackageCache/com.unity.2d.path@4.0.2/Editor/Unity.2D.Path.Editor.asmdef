@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 {
     "name": "Unity.2D.Path.Editor",
     "references": [],
@@ -13,20 +12,4 @@
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": []
-=======
-{
-    "name": "Unity.2D.Path.Editor",
-    "references": [],
-    "optionalUnityReferences": [],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": []
->>>>>>> Stashed changes
 }

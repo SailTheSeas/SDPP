@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 {
     "name": "Unity.2D.IK.Editor",
     "references": [
@@ -20,27 +19,4 @@
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
-=======
-{
-    "name": "Unity.2D.IK.Editor",
-    "references": [
-        "Unity.InternalAPIEditorBridge.001",
-        "Unity.InternalAPIEngineBridge.001",
-        "Unity.2D.Common.Editor",
-        "Unity.2D.Common.Runtime",
-        "Unity.2D.IK.Runtime",
-        "Unity.2D.Animation.Editor"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
->>>>>>> Stashed changes
 }

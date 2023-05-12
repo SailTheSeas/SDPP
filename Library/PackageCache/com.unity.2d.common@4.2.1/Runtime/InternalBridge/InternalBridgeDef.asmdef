@@ -1,16 +1,7 @@
-<<<<<<< Updated upstream
 {
     "name": "Unity.InternalAPIEngineBridge.001",
     "references": [],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": []
-=======
-{
-    "name": "Unity.InternalAPIEngineBridge.001",
-    "references": [],
-    "optionalUnityReferences": [],
-    "includePlatforms": [],
-    "excludePlatforms": []
->>>>>>> Stashed changes
 }

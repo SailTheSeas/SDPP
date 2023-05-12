@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 using System.Collections;
 using NUnit.Framework.Internal;
 
@@ -9,15 +8,3 @@ namespace UnityEngine.TestRunner.NUnitExtensions.Runner
         IEnumerable ExecuteEnumerable(ITestExecutionContext context);
     }
 }
-=======
-using System.Collections;
-using NUnit.Framework.Internal;
-
-namespace UnityEngine.TestRunner.NUnitExtensions.Runner
-{
-    internal interface IEnumerableTestMethodCommand
-    {
-        IEnumerable ExecuteEnumerable(ITestExecutionContext context);
-    }
-}
->>>>>>> Stashed changes

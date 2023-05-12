@@ -1,13 +1,5 @@
-<<<<<<< Updated upstream
 {
     "displayName": "Sprite Shape Samples",
 	"interactiveImport": "false",
     "description": "Samples to get started with SpriteShape",
 }
-=======
-{
-    "displayName": "Sprite Shape Samples",
-	"interactiveImport": "false",
-    "description": "Samples to get started with SpriteShape",
-}
->>>>>>> Stashed changes

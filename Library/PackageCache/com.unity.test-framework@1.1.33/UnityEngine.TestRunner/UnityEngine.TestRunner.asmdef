@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 {
     "name": "UnityEngine.TestRunner",
     "references": [],
@@ -11,18 +10,4 @@
     ],
     "autoReferenced": false,
     "defineConstraints": []
-=======
-{
-    "name": "UnityEngine.TestRunner",
-    "references": [],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": true,
-    "precompiledReferences": [
-        "nunit.framework.dll"
-    ],
-    "autoReferenced": false,
-    "defineConstraints": []
->>>>>>> Stashed changes
 }
