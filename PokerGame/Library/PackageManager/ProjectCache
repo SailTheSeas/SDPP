@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638195156519496267
-    m_Hash: 2345067230
+      ticks: 638195164367236318
+    m_Hash: 4079928013
   m_LockFileStatus:
     m_FilePath: C:/Users/kevin/OneDrive/Documents/GitHub/SDPP/PokerGame/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638195156551173391
-    m_Hash: 1234011661
+      ticks: 638195164367236318
+    m_Hash: 367939307
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
