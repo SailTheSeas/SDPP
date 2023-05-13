@@ -1,13 +1,13 @@
+using Mirror;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Mirror;
 
 public class ChatBehaviour : NetworkBehaviour
 {
-    [SerializeField] private Text chatText;
-    [SerializeField] private InputField inputField;
-    [SerializeField] private GameObject canvas;
+    [SerializeField] private Text chatText = null;
+    [SerializeField] private InputField inputField = null;
+    [SerializeField] private GameObject canvas = null;
 
     private static event Action<string> OnMessage;
 
@@ -20,10 +20,11 @@ public class ChatBehaviour : NetworkBehaviour
     }
 
     // Called when a client has exited the server
-    [ClientCallback]
-    private void OnDestroy()
+    [ClientCallback] private void OnDestroy()
     {
-        if (!isOwned) { return; }
+        if (!isOwned) { 
+            return; 
+        }
 
         OnMessage -= HandleNewMessage;
     }
@@ -38,17 +39,22 @@ public class ChatBehaviour : NetworkBehaviour
     [Client]
     public void Send()
     {
-        if (!Input.GetKeyDown(KeyCode.Return)) { return; }
-        if (string.IsNullOrWhiteSpace(inputField.text)) { return; }
+        if (!Input.GetKeyDown(KeyCode.Return)) { 
+            return; 
+        }
+        if (string.IsNullOrWhiteSpace(inputField.text)) {
+            return; 
+        }
         CmdSendMessage(inputField.text);
         inputField.text = string.Empty;
+        Debug.Log("Message Sent");
     }
 
     [Command]
     private void CmdSendMessage(string message)
     {
         // Validate message
-        RpcHandleMessage($"[{connectionToClient.connectionId}]: {message}");
+        RpcHandleMessage(connectionToClient.connectionId+":"+ message);
     }
 
     [ClientRpc]
