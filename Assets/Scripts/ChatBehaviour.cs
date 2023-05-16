@@ -45,9 +45,10 @@ public class ChatBehaviour : NetworkBehaviour
         if (string.IsNullOrWhiteSpace(inputField.text)) {
             return; 
         }
-        CmdSendMessage(inputField.text);
+        string msg = inputField.text;
+        Debug.Log(msg);
+        //CmdSendMessage(inputField.text);
         inputField.text = string.Empty;
-        Debug.Log("Message Sent");
     }
 
     [Command]

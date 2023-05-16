@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1888681117321859928}
   - component: {fileID: 1888681117321862311}
   - component: {fileID: 1888681117321862310}
-  - component: {fileID: 2532769654586853339}
+  - component: {fileID: -7837663033862857831}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -52,7 +52,7 @@ MonoBehaviour:
   sendRate: 30
   offlineScene: 
   onlineScene: 
-  transport: {fileID: 2532769654586853339}
+  transport: {fileID: 0}
   networkAddress: localhost
   maxConnections: 100
   authenticator: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetX: 0
   offsetY: 0
---- !u!114 &2532769654586853339
+--- !u!114 &-7837663033862857831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
