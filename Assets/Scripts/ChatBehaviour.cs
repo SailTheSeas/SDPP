@@ -13,25 +13,7 @@ public class ChatBehaviour : NetworkBehaviour
     [SerializeField] private GameObject message=null;
     [SerializeField] private Button sendButton =null;
 
-    private static event Action<string> OnMessage;
-
-    // Called when the a client is connected to the server
-    /*public override void OnStartAuthority()
-    {
-        canvas.SetActive(true);
-
-        OnMessage += HandleNewMessage;
-    }
-
-    // Called when a client has exited the server
-    [ClientCallback] private void OnDestroy()
-    {
-        if (!isOwned) { 
-            return; 
-        }
-
-        OnMessage -= HandleNewMessage;
-    }*/
+    //runs similarly to update - checks if the chat message is too long and deactivates the send button when it is
     private void FixedUpdate()
     {
         if (inputField.text.Length > 100)
@@ -43,7 +25,7 @@ public class ChatBehaviour : NetworkBehaviour
         }
     }
 
-    // When a client hits the enter button, send the message in the InputField
+    // When a client hits the send button, send the message in the InputField
     [Client] public void Send()
     {
         if (string.IsNullOrWhiteSpace(inputField.text)) {
@@ -62,6 +44,7 @@ public class ChatBehaviour : NetworkBehaviour
         RpcChatUpdate(msg);
     }
 
+    //Send the message from the client to the clients
     [ClientRpc] void RpcChatUpdate(string msg)
     {
         GameObject sent = Instantiate(message);
@@ -69,18 +52,4 @@ public class ChatBehaviour : NetworkBehaviour
         sent.transform.parent = chatBox.transform;
         Debug.Log(chatBox.transform.childCount);
     }
-
-[Command]
-    private void CmdSendMessage(string message)
-    {
-        // Validate message
-        RpcHandleMessage(connectionToClient.connectionId+":"+ message);
-    }
-
-    [ClientRpc]
-    private void RpcHandleMessage(string message)
-    {
-        OnMessage?.Invoke($"\n{message}");
-    }
-
 }
