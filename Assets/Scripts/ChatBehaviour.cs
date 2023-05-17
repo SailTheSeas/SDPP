@@ -11,11 +11,12 @@ public class ChatBehaviour : NetworkBehaviour
     [SerializeField] private GameObject canvas = null;
     [SerializeField] private GameObject chatBox = null;
     [SerializeField] private GameObject message=null;
+    [SerializeField] private Button sendButton =null;
 
     private static event Action<string> OnMessage;
 
     // Called when the a client is connected to the server
-    public override void OnStartAuthority()
+    /*public override void OnStartAuthority()
     {
         canvas.SetActive(true);
 
@@ -30,17 +31,20 @@ public class ChatBehaviour : NetworkBehaviour
         }
 
         OnMessage -= HandleNewMessage;
-    }
-
-    // When a new message is added, update the Scroll View's Text to include the new message
-    private void HandleNewMessage(string message)
+    }*/
+    private void FixedUpdate()
     {
-        chatText.text += message;
+        if (inputField.text.Length > 100)
+        {
+            sendButton.interactable = false;
+        }else
+        {
+            sendButton.interactable = true;
+        }
     }
 
     // When a client hits the enter button, send the message in the InputField
-    [Client]
-    public void Send()
+    [Client] public void Send()
     {
         if (string.IsNullOrWhiteSpace(inputField.text)) {
             return; 
@@ -49,26 +53,21 @@ public class ChatBehaviour : NetworkBehaviour
         Debug.Log(msg.Length);
         Debug.Log("msg got");
         CmdSpawnText(msg);
-        //CmdSendMessage(inputField.text);
-        inputField.text = string.Empty;
-
-        
+        inputField.text = string.Empty;   
     }
-
-
+    
+    //Sends the message to the server
     [Command (requiresAuthority = false)] private void CmdSpawnText(string msg)
     {
         RpcChatUpdate(msg);
+    }
 
-}
     [ClientRpc] void RpcChatUpdate(string msg)
     {
-        Debug.Log("msg to sedn");
         GameObject sent = Instantiate(message);
         sent.GetComponent<Text>().text = "Player name: " + msg;
         sent.transform.parent = chatBox.transform;
-        NetworkServer.Spawn(sent, connectionToClient);
-        Debug.Log("yuo should have new messgaes");
+        Debug.Log(chatBox.transform.childCount);
     }
 
 [Command]
