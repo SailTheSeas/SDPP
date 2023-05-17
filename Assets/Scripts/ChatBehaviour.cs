@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class ChatBehaviour : NetworkBehaviour
 {
     [SerializeField] private Text chatText = null;
+    [SerializeField] private Text spawnMessage = null;
     [SerializeField] private InputField inputField = null;
     [SerializeField] private GameObject canvas = null;
+    [SerializeField] private GameObject chatBox = null;
+    [SerializeField] private GameObject message=null;
 
     private static event Action<string> OnMessage;
 
@@ -39,19 +42,36 @@ public class ChatBehaviour : NetworkBehaviour
     [Client]
     public void Send()
     {
-        if (!Input.GetKeyDown(KeyCode.Return)) { 
-            return; 
-        }
         if (string.IsNullOrWhiteSpace(inputField.text)) {
             return; 
         }
         string msg = inputField.text;
-        Debug.Log(msg);
+        Debug.Log(msg.Length);
+        Debug.Log("msg got");
+        CmdSpawnText(msg);
         //CmdSendMessage(inputField.text);
         inputField.text = string.Empty;
+
+        
     }
 
-    [Command]
+
+    [Command (requiresAuthority = false)] private void CmdSpawnText(string msg)
+    {
+        RpcChatUpdate(msg);
+
+}
+    [ClientRpc] void RpcChatUpdate(string msg)
+    {
+        Debug.Log("msg to sedn");
+        GameObject sent = Instantiate(message);
+        sent.GetComponent<Text>().text = "Player name: " + msg;
+        sent.transform.parent = chatBox.transform;
+        NetworkServer.Spawn(sent, connectionToClient);
+        Debug.Log("yuo should have new messgaes");
+    }
+
+[Command]
     private void CmdSendMessage(string message)
     {
         // Validate message
