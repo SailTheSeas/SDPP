@@ -224,16 +224,10 @@ QualitySettings:
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
     Android: 2
-<<<<<<< HEAD
     CloudRendering: 5
     GameCoreScarlett: 5
     GameCoreXboxOne: 5
     Lumin: 5
-=======
-    Lumin: 5
-    GameCoreScarlett: 5
-    GameCoreXboxOne: 5
->>>>>>> Networking
     Nintendo Switch: 5
     PS4: 5
     PS5: 5

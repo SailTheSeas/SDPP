@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Mirror\Core\Batching\Unbatcher.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Logging\NetworkLogSettings.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkBehaviour.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkClient.cs" />
@@ -63,104 +64,103 @@
     <Compile Include="Assets\Mirror\Core\AssemblyInfo.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\FallbackTransport.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkLoop.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\NetworkTransformBase.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkWriter.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\LogFilter.cs" />
     <Compile Include="Assets\Mirror\Core\PortTransport.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkWriterPool.cs" />
+    <Compile Include="Assets\Mirror\Core\InterestManagement.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\SyncVarGameObject.cs" />
     <Compile Include="Assets\Mirror\Core\Attributes.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\InstantiateNetworkManager.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkReader.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkConnection.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\IUnityEqualCheck.cs" />
+    <Compile Include="Assets\Mirror\Core\Tools\Extensions.cs" />
+    <Compile Include="Assets\Mirror\Core\Tools\Utils.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkDiagnostics.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkWriterPooled.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\Events.cs" />
     <Compile Include="Assets\Mirror\Core\Tools\ExponentialMovingAverage.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\NetworkOwnerChecker.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Logging\LogSettings.cs" />
+    <Compile Include="Assets\Mirror\Core\SnapshotInterpolation\TimeSnapshot.cs" />
     <Compile Include="Assets\Mirror\Core\SyncObject.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\NetworkVisibility.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkClient_TimeInterpolation.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\QuitButtonHUD.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\StringHash.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkStartPosition.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkAuthenticator.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Logging\EditorLogSettingsLoader.cs" />
-    <Compile Include="Assets\Mirror\Core\Transport.cs" />
     <Compile Include="Assets\Mirror\Core\SyncList.cs" />
+    <Compile Include="Assets\Mirror\Core\Transport.cs" />
     <Compile Include="Assets\Mirror\Core\TransportError.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\IRequestCreator.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\JsonStructs.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkMessage.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\NetworkManagerListServerPong.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkServer.cs" />
     <Compile Include="Assets\Mirror\Core\Tools\Compression.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\Extensions.cs" />
+    <Compile Include="Assets\Mirror\Core\LocalConnectionToClient.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkManager.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\ListServerJson.cs" />
     <Compile Include="Assets\Mirror\Core\Tools\Mathd.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\ListServerClientApi.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\LogFactory.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\NetworkManagerListServer.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\ServerListManager.cs" />
+    <Compile Include="Assets\Mirror\Core\Messages.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\ClientScene.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\BaseApi.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\ApiUpdater.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\Logger.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\SyncVarNetworkBehaviour.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkReaderPooled.cs" />
     <Compile Include="Assets\Mirror\Core\LocalConnectionToServer.cs" />
     <Compile Include="Assets\Mirror\Core\InterestManagementBase.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\ListServerServerApi.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Logging\NetworkHeadlessLogger.cs" />
     <Compile Include="Assets\Mirror\Core\SnapshotInterpolation\SnapshotInterpolation.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkMessages.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\RequestCreator.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\SyncVarNetworkIdentity.cs" />
+    <Compile Include="Assets\Mirror\Core\Batching\Batcher.cs" />
     <Compile Include="Assets\Mirror\Core\SnapshotInterpolation\SnapshotInterpolationSettings.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkWriterExtensions.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\DotNetCompatibility.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\Player.cs" />
-    <Compile Include="Assets\Mirror\Core\RemoteCalls.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkConnectionToServer.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\ListServerBaseApi.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkIdentity.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\ServerListUI.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\BallManager.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkManagerHUD.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\ListServer.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Logging\LogFactory.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\ICoroutineRunner.cs" />
-    <Compile Include="Assets\Mirror\Core\Tools\DeltaCompression.cs" />
-    <Compile Include="Assets\Mirror\Core\Batching\Unbatcher.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\NetworkTransformBase.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkWriter.cs" />
-    <Compile Include="Assets\Mirror\Core\InterestManagement.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\InstantiateNetworkManager.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkReader.cs" />
-    <Compile Include="Assets\Mirror\Core\Tools\Extensions.cs" />
-    <Compile Include="Assets\Mirror\Core\Tools\Utils.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\NetworkOwnerChecker.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Logging\LogSettings.cs" />
-    <Compile Include="Assets\Mirror\Core\SnapshotInterpolation\TimeSnapshot.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\NetworkVisibility.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkClient_TimeInterpolation.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\StringHash.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkStartPosition.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkAuthenticator.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\IRequestCreator.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkMessage.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkServer.cs" />
-    <Compile Include="Assets\Mirror\Core\LocalConnectionToClient.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\NetworkManagerListServer.cs" />
-    <Compile Include="Assets\Mirror\Core\Messages.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\ClientScene.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\BaseApi.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\Logger.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkReaderPooled.cs" />
-    <Compile Include="Assets\Mirror\Core\NetworkMessages.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\RequestCreator.cs" />
-    <Compile Include="Assets\Mirror\Core\Batching\Batcher.cs" />
     <Compile Include="Assets\Mirror\Core\Tools\Pool.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkBehaviourSyncVar.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\SyncVar.cs" />
+    <Compile Include="Assets\Mirror\Core\RemoteCalls.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkConnectionToServer.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\NetworkProximityChecker.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\NetworkSceneChecker.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkConnectionToClient.cs" />
     <Compile Include="Assets\Mirror\Core\SnapshotInterpolation\Snapshot.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\ListServerBaseApi.cs" />
     <Compile Include="Assets\Mirror\Core\HostMode.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\Ball.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkReaderExtensions.cs" />
     <Compile Include="Assets\Mirror\Core\Tools\Vector3Long.cs" />
     <Compile Include="Assets\Mirror\Core\SyncSet.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkIdentity.cs" />
     <Compile Include="Assets\Mirror\Core\Tools\TimeSample.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkTime.cs" />
-    <Compile Include="Assets\Mirror\Core\Empty\Cloud\ApiConnector.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\ServerListUI.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\NetworkMatchChecker.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\ApiConnector.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\BallManager.cs" />
+    <Compile Include="Assets\Mirror\Core\NetworkManagerHUD.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\ListServer.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Logging\LogFactory.cs" />
     <Compile Include="Assets\Mirror\Core\NetworkReaderPool.cs" />
     <Compile Include="Assets\Mirror\Core\SyncDictionary.cs" />
+    <Compile Include="Assets\Mirror\Core\Empty\Cloud\ICoroutineRunner.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\QuickListServerDebug.cs" />
+    <Compile Include="Assets\Mirror\Core\Tools\DeltaCompression.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Cloud\ServerListUIItem.cs" />
     <Compile Include="Assets\Mirror\Core\Empty\Logging\ConsoleColorLogHandler.cs" />
   </ItemGroup>
@@ -406,23 +406,14 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Pdb.dll</HintPath>
-    </Reference>
-    <Reference Include="log4netPlastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.6\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.CecilX.Rocks">
       <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.6\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.6.12\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Editor.dll</HintPath>
+    <Reference Include="Mono.CecilX.Pdb">
+      <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.6\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
@@ -433,8 +424,8 @@
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.6\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Tracker.dll</HintPath>
+    <Reference Include="log4netPlastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.6\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
       <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Mdb.dll</HintPath>

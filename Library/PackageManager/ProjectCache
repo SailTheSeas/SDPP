@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638199291084850667
-    m_Hash: 2644792337
+      ticks: 638199292193523876
+    m_Hash: 759586089
   m_LockFileStatus:
     m_FilePath: C:/Users/kevin/OneDrive/Documents/GitHub/SDPP/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638199291105468055
-    m_Hash: 2578856640
+      ticks: 638199292193523876
+    m_Hash: 4051700286
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -3824,6 +3824,7 @@ m_PackageAssets:
         - 1.7.1
         - 1.8.1
         - 1.8.2
+        - 1.9.0
         compatible:
         - 1.0.1
         - 1.1.0-pre.7
@@ -3846,6 +3847,7 @@ m_PackageAssets:
         - 1.7.1
         - 1.8.1
         - 1.8.2
+        - 1.9.0
         verified: 1.6.0
       dependencies:
       - name: com.unity.modules.unitywebrequest
