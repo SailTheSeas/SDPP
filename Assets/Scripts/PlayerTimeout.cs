@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.UI;
 
 public class PlayerTimeout : NetworkBehaviour
 {
     public int timeAmount;
     private IEnumerator coroutine;
     NetworkConnectionToClient conn;
+    public Text timer;
     // Start is called before the first frame update
     [Client]void Awake()
     {
@@ -45,7 +47,8 @@ public class PlayerTimeout : NetworkBehaviour
         {
             if(i<=(timeAmount/2))
             {
-                Debug.Log(i);
+                timer.text += i.ToString() + " ";
+                //Debug.Log(i);
             }
             if(i==0)
             {

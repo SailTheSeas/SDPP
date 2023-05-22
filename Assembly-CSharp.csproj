@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\Card.cs" />
     <Compile Include="Assets\Scripts\Pot.cs" />
     <Compile Include="Assets\Scripts\GameWin.cs" />
+    <Compile Include="Assets\Scripts\PlayerTimeout.cs" />
     <Compile Include="Assets\Scripts\ChatBehaviour.cs" />
     <Compile Include="Assets\Scripts\PlayerType.cs" />
     <Compile Include="Assets\Scripts\PlayerHand.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="Assets\Scripts\PlayerActions.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\PlayerBet.cs" />
-    <Compile Include="Assets\Scripts\PlayerTimeout.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />
