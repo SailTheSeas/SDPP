@@ -21,6 +21,11 @@ public class TableHand : MonoBehaviour
 
     }
 
+    public void reshuffle()
+    {
+        numCardsInPlay = 0;
+    }
+
     public Card getCard(int num)
     {
         return hand[num];
@@ -51,7 +56,7 @@ public class TableHand : MonoBehaviour
 
     public void showFlop()
     {
-        hand[0].clearDisplay(display);
+        clearDisplay();
         hand[0].displayCard(display, hand[0]);
         hand[1].displayCard(display, hand[1]);
         hand[2].displayCard(display, hand[2]);
@@ -65,5 +70,10 @@ public class TableHand : MonoBehaviour
     public void showRiver()
     {
         hand[4].displayCard(display, hand[4]);
+    }
+
+    public void clearDisplay()
+    {
+        hand[0].clearDisplay(display);
     }
 }

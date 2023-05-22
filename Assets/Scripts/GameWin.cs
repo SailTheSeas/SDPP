@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.UI;
+using System.Linq;
 
 public class GameWin : MonoBehaviour
 {
-
+    Card[ , ] allCombs = new Card[21, 5];
+    int row = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,41 +22,124 @@ public class GameWin : MonoBehaviour
         
     }
 
-    public void testHands(Card[] hand)
+    //Decide which hand is bigger between two player hands of same value
+    //Returns a one if its the first player, 2 if its the second player
+    //and returns a zero if it is a tie
+    public int isTie(Card[] hand1, Card[] hand2, int handStrength)
     {
-        Card[] strongestHand = new Card[5];
+        bool handOneStronger = false, handTwoStronger = false;
+        hand1 = sortHand(hand1);
+        hand2 = sortHand(hand2);
+        Card[] strongestHand;
+        
+        strongestHand = findStrongerHand(hand1, hand2, handStrength);
+        if (strongestHand == hand1)
+            handOneStronger = true;
+        strongestHand = findStrongerHand(hand2, hand1, handStrength);
+        if (strongestHand == hand2)
+            handTwoStronger = true;
 
-        strongestHand = findStrongest(hand, 0, 7, 0, 5);
+        if (handOneStronger && handTwoStronger)
+            return 0;
+        else
+            if (handOneStronger)
+                return 1;
+            else
+                return 2;
     }
 
-    public Card[] findStrongest(Card[] hand, int begin, int end, int currentCycle, int handSize)
+    public void testHands(Text display)
     {
-        Card[] strongestHand = new Card[handSize];
-        int handStrength = 0;
-        if (currentCycle == handSize)
+        Card[] theStrong = findStrongest();
+        for (int i = 0; i < 5; i++)
         {
-            return strongestHand;
+            display.text += theStrong[i].getCardValue() + " " + theStrong[i].getCardSuit().ToString() + "  ";
         }
 
-        for (int i = begin; (i <= end) && (end - i + 1) >= (handSize - currentCycle); i++)
+    }
+
+    public Card[] findStrongest()
+    {
+        Card[] strongestHand = new Card[5];
+        Card[] temp = new Card[5];
+        int handStrength, strongestHandStrength = 0;
+        for (int i = 0; i < 21; i++)
         {
-            //handStrength = getHandValue()
+            for (int l = 0; l < 5; l++)
+            {
+                temp[l] = allCombs[i, l];
+            }
+            handStrength = getHandValue(temp);
+            if (handStrength == strongestHandStrength)
+            {
+                strongestHand = findStrongerHand(strongestHand, temp, handStrength);
+            }
+            else
+                if (handStrength > strongestHandStrength)
+                {
+                    strongestHandStrength = handStrength;
+                    strongestHand = temp.ToArray();
+                }
         }
-        return hand;
+        return strongestHand;
+    }
+
+    public void generateAllCombinations(Card[] hand, Card[] data, int start, int end, int index, int r, Text display)
+    {
+        if (index == r)
+        {
+            loadHands(data);
+            /*for (int l = 0; l < r; l++)
+            {
+                display.text += data[l].getCardValue() + " " + data[l].getCardSuit().ToString() + "  ";
+            }
+            display.text += "\n";*/
+        }
+            
+
+        for (int i = start; (i <= end) && (end - i + 1 >= r - index); i++)
+        {
+            data[index] = hand[i];
+            generateAllCombinations(hand, data, i + 1, end, index + 1, r, display);
+        }
+
+
+    }
+
+    public void loadHands(Card[] hands)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            allCombs[row, i] = hands[i];
+        }
+        row++;
+    }
+
+    public void displayHands(Text display)
+    {
+        display.text = "";
+        for (int i = 0; i < 21; i++)
+        {
+            for (int l = 0; l < 5; l++)
+            {
+                display.text += allCombs[i, l].getCardValue() + " " + allCombs[i, l].getCardSuit().ToString() + "  ";
+            }
+            display.text += "\n";
+        }
     }
 
     public Card[] sortHand(Card[] hand)
     {
         Card temp;
-        for (int i = 1; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 5 - i - 1; j++)
             {
-                if (hand[i].getCardValue() > hand[j+1].getCardValue())
+                if (hand[j].getCardValue() > hand[j+1].getCardValue())
                 {
-                    temp = hand[i];
-                    hand[i] = hand[i + 1];
-                    hand[i+1] = temp;
+                    temp = hand[j];
+                    hand[j] = hand[j + 1];
+                    hand[j+1] = temp;
                 }
             }
         }
@@ -66,18 +153,6 @@ public class GameWin : MonoBehaviour
         for (int i = 1; i < 5; i++)
         {
             if (hand[i].getCardValue() != hand[i-1].getCardValue()+1)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public bool isConsecutiveEXC(Card[] hand)
-    {
-        for (int i = 2; i < 5; i++)
-        {
-            if (hand[i].getCardValue() != hand[i - 1].getCardValue() + 1)
             {
                 return false;
             }
@@ -100,7 +175,7 @@ public class GameWin : MonoBehaviour
 
         //Array to increment each number found.
         int[] matchingFaces = new int[13];
-        for (int x = 0; x < 14; x++)
+        for (int x = 0; x < 13; x++)
             matchingFaces[x] = 0;
         int numOfTwoKind = 0;
         int numOfThreeKind = 0;
@@ -114,7 +189,7 @@ public class GameWin : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             num = hand[i].getCardValue();
-            matchingFaces[num]++;
+            matchingFaces[num-1]++;
 
             if (num == 0 || num > 9)
             {
@@ -162,10 +237,7 @@ public class GameWin : MonoBehaviour
         if (royals == 5)
             fiveRoyals = true;
 
-        if (hand[0].getCardValue() == 1)
-            consNums = isConsecutiveEXC(hand);
-        else
-            consNums = isConsecutive(hand);
+        consNums = isConsecutive(hand);
 
         if (numOfTwoKind == 1 && numOfThreeKind == 1)
             value = 7;
@@ -182,7 +254,7 @@ public class GameWin : MonoBehaviour
                         if (fourOfKind)
                             value = 8;
                         else
-                            if (consNums == true && allSameSuit == true && fiveRoyals == true)
+                            if (allSameSuit == true && fiveRoyals == true)
                                 value = 10;
                             else
                                 if (consNums == true && allSameSuit == true)
@@ -200,4 +272,190 @@ public class GameWin : MonoBehaviour
 
         return value;
     }
+
+    //Card to decide between two hands of the same strength
+    //In the case of a tie between the hands, the inital hand is kept
+    //If they tie, then whichever one is kept is unimportant
+    public Card[] findStrongerHand(Card[] strongHand, Card[] hand, int handStrength)
+    {
+        Card[] strongestHand = strongHand;
+        hand = sortHand(hand);
+        strongHand = sortHand(strongHand);
+        int strongHandPair, handPair;
+        switch (handStrength)
+        {
+            //High Card, we find the compare each of the cards from highest to lowest
+            //First hand with a higher card wins, otherwise tie and stronghand is kept
+            //Ace counts as higher card here
+            case 1:
+                strongestHand = findBiggestHighCard(strongHand, hand);
+                return strongestHand;
+            //One Pair, we find the pairs and compare them
+            //Take highest pair of the two
+            //If a tie, compar the rest of hand
+            case 2:
+                strongHandPair = findStrongestPair(strongHand);
+                handPair = findStrongestPair(hand);
+                if (strongHandPair == handPair)
+                    strongestHand = findBiggestHighCard(strongHand, hand);
+                else
+                    if (strongHandPair > handPair)
+                        strongestHand = strongHand;
+                    else
+                        strongestHand = hand;
+                return strongestHand;
+            //Two Pair, same as one pair
+            //Except we compare the highest pair, then the next pair if a tie
+            //And if its another tie, we compare the last card
+            case 3:
+                strongHandPair = findStrongestPair(strongHand);
+                handPair = findStrongestPair(hand);
+                if (strongHandPair == handPair)
+                {
+                    strongHandPair = findSecondStrongestPair(strongHand);
+                    handPair = findSecondStrongestPair(hand);
+                    if (strongHandPair == handPair)
+                        strongestHand = findBiggestHighCard(strongHand, hand);
+                    else
+                        if (strongHandPair > handPair)
+                            strongestHand = strongHand;
+                        else
+                            strongestHand = hand;
+                }
+                else
+                    if (strongHandPair > handPair)
+                        strongestHand = strongHand;
+                    else
+                        strongestHand = hand;
+                return strongestHand;
+            //Three of a kind same concept as one pair
+            case 4:
+                strongHandPair = findStrongestPair(strongHand);
+                handPair = findStrongestPair(hand);
+                if (strongHandPair == handPair)
+                    strongestHand = findBiggestHighCard(strongHand, hand);
+                else
+                    if (strongHandPair > handPair)
+                    strongestHand = strongHand;
+                else
+                    strongestHand = hand;
+                return strongestHand;
+            //Straight, compare cards same as high card
+            //However, ace counts as one in a straight
+            //Save for a royal flush, but that is a different case
+            case 5:
+                strongestHand = findBiggestStraight(strongHand, hand);
+                return strongestHand;
+            //Flush, same concept as high card
+            case 6:
+                strongestHand = findBiggestHighCard(strongHand, hand);
+                return strongestHand;
+            //Full House, first we compare the three pair
+            //If its a tie we compare the two pair, but this can be done same as high card
+            case 7:
+                strongHandPair = findThreePairFullHouse(strongHand);
+                handPair = findThreePairFullHouse(hand);
+                if (strongHandPair == handPair)
+                    strongestHand = findBiggestHighCard(strongHand, hand);
+                else
+                    if (strongHandPair > handPair)
+                    strongestHand = strongHand;
+                else
+                    strongestHand = hand;
+                return strongestHand;
+            //Four of a Kind, same concept as three of a kind and one pair 
+            case 8:
+                strongHandPair = findStrongestPair(strongHand);
+                handPair = findStrongestPair(hand);
+                if (strongHandPair == handPair)
+                    strongestHand = findBiggestHighCard(strongHand, hand);
+                else
+                    if (strongHandPair > handPair)
+                    strongestHand = strongHand;
+                else
+                    strongestHand = hand;
+                return strongestHand;
+            //Straight flush, same concept as a straight
+            case 9:
+                strongestHand = findBiggestStraight(strongHand, hand);
+                return strongestHand;
+            //Royal Flush, highest hand, can only tie with itself
+            case 10:
+                return strongHand;               
+            default:
+                return strongHand;
+        }
+    }
+    public int findStrongestPair(Card[] hand)
+    {
+        int num = 0;
+        for (int i = 1; i < 4; i++)
+        {
+            if (hand[i].getCardValue() == hand[i + 1].getCardValue() || hand[i].getCardValue() == hand[i - 1].getCardValue())
+                if (hand[i].getCardValue() > num && num != 1)
+                    num = hand[i].getCardValue();
+        }
+        return num;
+    }
+
+    public int findSecondStrongestPair(Card[] hand)
+    {
+        int strongestPair = findStrongestPair(hand);
+        int num = 0;
+        for (int i = 1; i < 4; i++)
+        {
+            if (hand[i].getCardValue() == hand[i + 1].getCardValue() || hand[i].getCardValue() == hand[i - 1].getCardValue())
+                if (hand[i].getCardValue() > num && (hand[i].getCardValue() < strongestPair || strongestPair == 1))
+                    num = hand[i].getCardValue();
+        }
+        return num;
+    }
+
+
+    public Card[] findBiggestHighCard(Card[] hand1, Card[] hand2)
+    {
+
+        if (hand1[0].getCardValue() == 1 && hand1[0].getCardValue() < hand2[0].getCardValue())
+            return hand1;
+
+        if (hand2[0].getCardValue() == 1 && hand1[0].getCardValue() > hand2[0].getCardValue())
+            return hand2;
+
+        for (int i = 4; i > 0; i--)
+        {
+            if (hand1[i].getCardValue() != hand2[i].getCardValue())
+                if (hand1[i].getCardValue() > hand2[i].getCardValue())
+                    return hand1;
+                else
+                    return hand2;
+        }
+
+        return hand1;
+    }
+
+    public Card[] findBiggestStraight(Card[] hand1, Card[] hand2)
+    {
+        for (int i = 4; i >= 0; i--)
+        {
+            if (hand1[i].getCardValue() != hand2[i].getCardValue())
+                if (hand1[i].getCardValue() > hand2[i].getCardValue())
+                    return hand1;
+                else
+                    return hand2;
+        }
+
+        return hand1;
+    }
+
+    public int findThreePairFullHouse(Card[] hand)
+    {
+        int num = 0;
+        for (int i = 1; i < 4; i++)
+        {
+            if (hand[i].getCardValue() == hand[i + 1].getCardValue() && hand[i].getCardValue() == hand[i - 1].getCardValue())
+                num = hand[i].getCardValue();
+        }
+        return num;
+    }
+
 }

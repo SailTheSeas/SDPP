@@ -41,9 +41,14 @@ public class PlayerHand : MonoBehaviour
 
     public void showCards()
     {
-        hand[0].clearDisplay(display);
+        clearDisplay();
         hand[0].displayCard(display, hand[0]);
         hand[1].displayCard(display, hand[1]);
+    }
+
+    public void clearDisplay()
+    {
+        hand[0].clearDisplay(display);
     }
 
 }

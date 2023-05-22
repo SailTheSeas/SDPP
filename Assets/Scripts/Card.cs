@@ -4,7 +4,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI;  
 
 public struct Card
 {
@@ -12,6 +12,16 @@ public struct Card
     private CardSuit suit;
     private int value;
     
+    public void setCardSuit(CardSuit newSuit)
+    {
+        suit = newSuit;
+    }
+
+    public void setCardValue(int newValue)
+    {
+        value = newValue;
+    }
+
     public CardSuit getCardSuit()
     {
         return suit;
@@ -74,6 +84,7 @@ public struct Card
 
     public void clearDisplay(Text display)
     {
-        display.text = "";
+        display.text = " ";
     }
+
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBet : MonoBehaviour
 {
     int wallet;
+    int minBet;
 
     void start()
     {
@@ -23,9 +24,24 @@ public class PlayerBet : MonoBehaviour
 
    public bool canBet(int amount)
     {
-        if (amount > wallet || amount <= 0)
+        if (amount > wallet || amount <= 0 || amount < minBet)
             return false;
         else
             return true;
+    }
+
+    public void setMinBet(int amount)
+    {
+        minBet = amount;
+    }
+
+    public int getMinBet()
+    {
+        return minBet;
+    }
+
+    public int getWallet()
+    {
+        return wallet;
     }
 }
