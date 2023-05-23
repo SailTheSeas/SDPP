@@ -13,17 +13,20 @@ public class PlayerTimeout : NetworkBehaviour
     // Start is called before the first frame update
     [Client]void Awake()
     {
+
+    }
+    /*public override void OnStartAuthority()
+    {
         Debug.Log(conn);
-       // OnButtonPress();
+        // OnButtonPress();
         if (isLocalPlayer)
         {
             Debug.Log("this isn't my item");
-
+            coroutine = counter(timeAmount);
+            StartCoroutine(coroutine);
             return;
         }
-        coroutine = counter(timeAmount);
-        StartCoroutine(coroutine);
-    }
+    }*/
     public void PlayerTurn()
     {
         StartCoroutine(coroutine);
