@@ -39,6 +39,7 @@ public class PlayerTimeout : NetworkBehaviour
     public void EndTurnTimer()  //KE - I am hoping that the player will have to press a button to decide their action - this function will be added to the button to stop the timer for the player
     {
         StopCoroutine(coroutine);
+        timer.text = " ";
     }
 
     [Client]IEnumerator counter(int duration)
@@ -47,8 +48,12 @@ public class PlayerTimeout : NetworkBehaviour
         {
             if(i<=(timeAmount/2))
             {
-                timer.text += i.ToString() + " ";
+                timer.text = i.ToString();
                 //Debug.Log(i);
+                if(i<=(timeAmount/4))
+                {
+                    timer.color = Color.red;
+                }
             }
             if(i==0)
             {
@@ -56,6 +61,7 @@ public class PlayerTimeout : NetworkBehaviour
             }
             yield return new WaitForSeconds(1);
         }
+        timer.text = " ";
     }
     [Command (requiresAuthority =false)] void cmdPlayerTimeout()
     {

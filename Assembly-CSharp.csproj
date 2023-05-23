@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\PlayerTimeout.cs" />
     <Compile Include="Assets\Scripts\ChatBehaviour.cs" />
     <Compile Include="Assets\Scripts\PlayerType.cs" />
+    <Compile Include="Assets\Scripts\TestCardDisplay.cs" />
     <Compile Include="Assets\Scripts\PlayerHand.cs" />
     <Compile Include="Assets\Scripts\TableHand.cs" />
     <Compile Include="Assets\Scripts\PlayerActions.cs" />

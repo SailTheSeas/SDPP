@@ -165,7 +165,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  timeAmount: 10
+  timeAmount: 20
   timer: {fileID: 7855395549045894309}
 --- !u!1 &4697614288741346765
 GameObject:
