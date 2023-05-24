@@ -73,6 +73,10 @@
     <Compile Include="Assets\Scripts\PlayerActions.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\PlayerBet.cs" />
+    <Compile Include="Assets\MyUnityScripts\UserSignUp.cs" />
+    <Compile Include="Assets\MyUnityScripts\UserLogIn.cs" />
+    <Compile Include="Assets\MyUnityScripts\RecordsLink.cs" />
+    <Compile Include="Assets\MyUnityScripts\DBController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />
@@ -321,6 +325,15 @@
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
       <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>Assets\Mirror\Tests\Common\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>Assets\Mirror\Tests\Common\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>Assets\Mirror\Tests\Common\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.42f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -823,6 +836,10 @@
     <ProjectReference Include="Mirror.Components.csproj">
       <Project>{8A08554A-4000-7C7C-C262-34C28127D0C3}</Project>
       <Name>Mirror.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="WeaverTestExtraAssembly.csproj">
+      <Project>{8211A17D-C2D1-640E-948D-5133C3C56935}</Project>
+      <Name>WeaverTestExtraAssembly</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
