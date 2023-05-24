@@ -70,9 +70,9 @@
     <Compile Include="Assets\Scripts\TableHand.cs" />
     <Compile Include="Assets\Scripts\SpawnCheck.cs" />
     <Compile Include="Assets\Scripts\PlayerActions.cs" />
-    <Compile Include="Assets\Scripts\NameButton.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\PlayerBet.cs" />
+    <Compile Include="Assets\Scripts\ConnectionHUD.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />

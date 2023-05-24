@@ -23,6 +23,7 @@ public class ChatBehaviour : NetworkBehaviour
             sendButton.interactable = true;
         }
     }
+    //KE - Used to fetch the player's username
     private void Start()
     {
         nameCanvas = GameObject.FindGameObjectWithTag("Login").GetComponentInChildren<Text>();
@@ -64,7 +65,7 @@ public class ChatBehaviour : NetworkBehaviour
         }
     }
 
-    //Deletes the oldest message
+    //Deletes the oldest message 
     void Deletemessage()
     {
         Destroy(chatBox.GetComponent<Transform>().GetChild(0).gameObject);
