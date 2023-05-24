@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour
 
     private void handOutCards()
     {
-        //drawCards.interactable = false;
+        drawCards.interactable = false;
         TH.newRound();
         playerActions[0].drawCards();
         playerActions[1].drawCards();
