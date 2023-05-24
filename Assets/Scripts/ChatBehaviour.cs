@@ -26,7 +26,7 @@ public class ChatBehaviour : NetworkBehaviour
     //KE - Used to fetch the player's username
     private void Start()
     {
-        nameCanvas = GameObject.FindGameObjectWithTag("Login").GetComponentInChildren<Text>();
+        nameCanvas = GameObject.FindGameObjectWithTag("Username").GetComponent<Text>();
     }
 
     //KE - When a client clicks the send button, send the message in the inputfield to the server and clear the input field
@@ -41,26 +41,30 @@ public class ChatBehaviour : NetworkBehaviour
 
         CmdSpawnText(msg, nameCanvas.text);
     }
+
+    [Command(requiresAuthority = false)] public void UpdateMessageChat(string name, string action)
+    {
+        RpcChatUpdate(action, name, Color.red);
+    }
     
     //KE - message is sent to the server. The server validates the message and communicates it to each client. 
     [Command (requiresAuthority = false)] private void CmdSpawnText(string msg, string playerName)
     {
-        RpcChatUpdate(msg, playerName);
+        RpcChatUpdate(msg, playerName, Color.white);
     }
 
-    //KE - Send the message from the server to each clients.
+    //KE - Send a message from the server to each client.
     //Checks the number of messages sent. If the numner is too high, then the oldest message gets deleted
-    [ClientRpc] void RpcChatUpdate(string msg, string playerName)
+    [ClientRpc] void RpcChatUpdate(string msg, string playerName, Color color)
     {
         GameObject sent = Instantiate(message);
         sent.GetComponent<Text>().text = playerName + ": " + msg;
+        sent.GetComponent<Text>().color = color;
         sent.transform.parent = chatBox.transform;
-        Debug.Log(chatBox.transform.childCount);
 
         int numMessages = chatBox.transform.childCount;
         if(numMessages>5)
         {
-            Debug.Log("this are to many mesage");
             Deletemessage();
         }
     }

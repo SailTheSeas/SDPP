@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Chat
   - Login
+  - Username
   layers:
   - Default
   - TransparentFX
