@@ -9,6 +9,7 @@ public class ConnectionHUD : MonoBehaviour
     [SerializeField] GameObject ClientButton;
     [SerializeField] GameObject ServerButton;
     NetworkManager manager;
+    NetworkManagerHUD hud;
     [SerializeField] Text update;
     private void Start()
     {
