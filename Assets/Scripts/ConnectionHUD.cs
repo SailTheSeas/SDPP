@@ -14,7 +14,7 @@ public class ConnectionHUD : MonoBehaviour
     private void Start()
     {
         update.text = "";
-        manager = GetComponent<NetworkManager>();
+        manager = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<NetworkManager>();
         if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
             ClientButton.SetActive(false);
@@ -27,7 +27,7 @@ public class ConnectionHUD : MonoBehaviour
     }
     public void StartServer()
     {
-
+        manager.StartServer();
     }
     public void ConnectClient()
     {

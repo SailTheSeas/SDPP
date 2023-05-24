@@ -9,6 +9,9 @@ TagManager:
   - Username
   - Player1
   - Player2
+  - NetworkManager
+  - Player3
+  - Player4
   layers:
   - Default
   - TransparentFX

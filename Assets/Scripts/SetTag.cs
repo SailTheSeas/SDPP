@@ -22,6 +22,14 @@ public class SetTag : MonoBehaviour
         {
             player = "Player2";
         }
+        if (GameObject.FindGameObjectsWithTag("Player2").Length > 0)
+        {
+            player = "Player3";
+        }
+        if (GameObject.FindGameObjectsWithTag("Player3").Length > 0)
+        {
+            player = "Player4";
+        }
         this.gameObject.tag = player;
     }
 }
