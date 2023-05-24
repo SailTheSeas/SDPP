@@ -77,9 +77,8 @@ public struct Card
             drawCard(drawnCards, x);
     }
 
-    public void displayCard(Text display, Image cardDisplay, Card cardToDisplay, Sprite[,] cardImages)
+    public void displayCard(Image cardDisplay, Card cardToDisplay, Sprite[,] cardImages)
     {
-        display.text += cardToDisplay.getCardSuit().ToString() + " " + cardToDisplay.getCardValue() + " ";
         switch (cardToDisplay.getCardSuit())
         {
             case CardSuit.HEARTS:
@@ -100,9 +99,8 @@ public struct Card
         }
     }
 
-    public void clearDisplay(Text display, Image cardDisplay, Sprite cardBack)
+    public void clearDisplay(Image cardDisplay, Sprite cardBack)
     {
-        display.text = " ";
         cardDisplay.sprite = cardBack;
     }
 

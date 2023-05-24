@@ -7,8 +7,6 @@ public class PlayerHand : MonoBehaviour
 {
     private Card[] hand = new Card[2];
     [SerializeField]
-    Text display;
-    [SerializeField]
     Image cardOne, cardTwo;
     Sprite[,] cardImages = new Sprite[4, 13];
     Sprite backImage;
@@ -53,14 +51,14 @@ public class PlayerHand : MonoBehaviour
     public void showCards()
     {
         clearDisplay();
-        hand[0].displayCard(display, cardOne, hand[0], cardImages);
-        hand[1].displayCard(display, cardTwo, hand[1], cardImages);
+        hand[0].displayCard(cardOne, hand[0], cardImages);
+        hand[1].displayCard(cardTwo, hand[1], cardImages);
     }
 
     public void clearDisplay()
     {
-        hand[0].clearDisplay(display, cardOne, backImage);
-        hand[0].clearDisplay(display, cardTwo, backImage);
+        hand[0].clearDisplay(cardOne, backImage);
+        hand[0].clearDisplay(cardTwo, backImage);
     }
 
 }

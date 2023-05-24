@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class TableHand : MonoBehaviour
 {
-    [SerializeField]
-    Text display;
     private Card[] hand = new Card[5];
     private Card[] cardsInPlay = new Card[13];
     [SerializeField]
@@ -67,28 +65,28 @@ public class TableHand : MonoBehaviour
     public void showFlop()
     {
         clearDisplay();
-        hand[0].displayCard(display, tableCards[0], hand[0], cardImages);
-        hand[1].displayCard(display, tableCards[1], hand[1], cardImages);
-        hand[2].displayCard(display, tableCards[2], hand[2], cardImages);
+        hand[0].displayCard(tableCards[0], hand[0], cardImages);
+        hand[1].displayCard(tableCards[1], hand[1], cardImages);
+        hand[2].displayCard(tableCards[2], hand[2], cardImages);
     }
 
     public void showTurn()
     {
-        hand[3].displayCard(display, tableCards[3], hand[3], cardImages);
+        hand[3].displayCard(tableCards[3], hand[3], cardImages);
     }
 
     public void showRiver()
     {
-        hand[4].displayCard(display, tableCards[4], hand[4], cardImages);
+        hand[4].displayCard(tableCards[4], hand[4], cardImages);
     }
 
     public void clearDisplay()
     {
-        hand[0].clearDisplay(display, tableCards[0], backImage);
-        hand[0].clearDisplay(display, tableCards[1], backImage);
-        hand[0].clearDisplay(display, tableCards[2], backImage);
-        hand[0].clearDisplay(display, tableCards[3], backImage);
-        hand[0].clearDisplay(display, tableCards[4], backImage);
+        hand[0].clearDisplay(tableCards[0], backImage);
+        hand[0].clearDisplay(tableCards[1], backImage);
+        hand[0].clearDisplay(tableCards[2], backImage);
+        hand[0].clearDisplay(tableCards[3], backImage);
+        hand[0].clearDisplay(tableCards[4], backImage);
 
     }
 }
