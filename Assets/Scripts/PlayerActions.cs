@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerActions : MonoBehaviour
 {
     private GameController GC;
-    private Pot betting;
     private PlayerHand PH;
     private PlayerBet BT;
     [SerializeField]
@@ -15,6 +14,8 @@ public class PlayerActions : MonoBehaviour
     private bool hasTakenTurn = true;
     private bool hasTakenAction = false;
     private PlayerType playerType;
+    [SerializeField]
+    Button playerFoldButton, playerRaiseButton, playerCallButton;
 
     int amountBet = 0;
     int gamesfolded = 0;
@@ -26,11 +27,16 @@ public class PlayerActions : MonoBehaviour
         PH = this.GetComponent<PlayerHand>();
         BT = this.GetComponent<PlayerBet>();
     }
-     
-    public void assignPot(Pot newPot)
+
+    public void createPlayer(TableHand newTH, GameController newGC, int newMinBet,int money)
     {
-        betting = newPot;
+        assignTable(newTH);
+        assignGameController(newGC);
+        setMinBet(newMinBet);
+        addMoney(money);
+        PH.setCardImages(GC.getCardImages(), GC.getBackImage());
     }
+     
 
     public void assignTable(TableHand TH)
     {
@@ -40,6 +46,26 @@ public class PlayerActions : MonoBehaviour
     public void assignGameController(GameController newGC)
     {
         GC = newGC;
+    }
+
+    public void assignButtons(Button foldButton, Button raiseButton,Button callbutton)
+    {
+        playerFoldButton = foldButton;
+        playerRaiseButton = raiseButton;
+        playerCallButton = callbutton;
+    }
+
+    public void setButtonsState(bool state)
+    {
+        playerFoldButton.interactable = state;
+        playerRaiseButton.interactable = state;
+        playerCallButton.interactable = state;
+    }
+
+    public void setButtonsStateEXCRaise(bool state)
+    {
+        playerFoldButton.interactable = state;
+        playerCallButton.interactable = state;
     }
 
     public void setMinBet(int amount)
@@ -75,6 +101,7 @@ public class PlayerActions : MonoBehaviour
                     setFolded(true);
                     setTurn(false);
                     setHasTakenTurn(true);
+                    setButtonsState(false);
                     gamesfolded++;
                     GC.setNextPlayer(false);
                 }
@@ -88,6 +115,7 @@ public class PlayerActions : MonoBehaviour
                 Debug.Log("Didnt match raise, folded");
                 setHasTakenAction(true);
                 setFolded(true);
+                setButtonsState(false);
                 gamesfolded++;
                 GC.waitForActions();
             }
@@ -107,10 +135,11 @@ public class PlayerActions : MonoBehaviour
                         amount = GC.getBigBlind();
                     else
                         amount = GC.getSmallBlind();
-                    betting.addMoney(amount);
+                    GC.potAddMoney(amount);
                     Debug.Log("Turn Over, betted " + amount);
                     setTurn(false);
                     setHasTakenTurn(true);
+                    setButtonsState(false);
                     amountBet += amount;
                     GC.setNextPlayer(false);
 
@@ -120,10 +149,11 @@ public class PlayerActions : MonoBehaviour
                     amount = GC.getMinBet();
                     if (BT.canBet(amount))
                     {
-                        betting.addMoney(amount);
+                        GC.potAddMoney(amount);
                         Debug.Log("Turn Over, betted " + amount);
                         setTurn(false);
                         setHasTakenTurn(true);
+                        setButtonsState(false);
                         amountBet += amount;
                         GC.setNextPlayer(false);
                     }
@@ -137,12 +167,13 @@ public class PlayerActions : MonoBehaviour
         {
             if (hasTakenTurn && !hasTakenAction)
             {
-                amount = GC.getMinBet();
+                amount = GC.getRaiseMatchAmount();
                 if (BT.canBet(amount))
                 {
-                    betting.addMoney(amount);
+                    GC.potAddMoney(amount);
                     Debug.Log("Called raise:  " + amount);
                     setHasTakenAction(true);
+                    setButtonsState(false);
                     amountBet += amount;
                     GC.waitForActions();
                 }
@@ -167,9 +198,10 @@ public class PlayerActions : MonoBehaviour
                 amount = GC.getMinRaise();
                 if (BT.canBet(amount))
                 {
-                    betting.addMoney(amount);
+                    GC.potAddMoney(amount);
                     setTurn(false);
-                    setHasTakenTurn(true);  
+                    setButtonsState(false);
+                    setHasTakenTurn(true);
                     setHasTakenAction(true);
                     amountBet += amount;
                     GC.raise(amount);
@@ -220,6 +252,11 @@ public class PlayerActions : MonoBehaviour
         return isFolded;
     }
 
+    public Card getCard(int num)
+    {
+        return PH.getCard(num);
+    }
+
     public bool getHasTakenAction()
     {
         return hasTakenAction;
@@ -248,6 +285,16 @@ public class PlayerActions : MonoBehaviour
     public int getPlayerWallet()
     {
         return BT.getWallet();
+    }
+
+    public Sprite[,] getCardImages()
+    {
+        return GC.getCardImages();
+    }
+
+    public Sprite getBackImage()
+    {
+        return GC.getBackImage();
     }
 
     public void isWinner()

@@ -8,19 +8,8 @@ using System.Linq;
 
 public class GameWin : MonoBehaviour
 {
-    Card[ , ] allCombs = new Card[21, 5];
+    private Card[ , ] allCombs = new Card[21, 5];
     int row = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     //Decide which hand is bigger between two player hands of same value
     //Returns a one if its the first player, 2 if its the second player
@@ -28,15 +17,32 @@ public class GameWin : MonoBehaviour
     public int isTie(Card[] hand1, Card[] hand2, int handStrength)
     {
         bool handOneStronger = false, handTwoStronger = false;
+        bool isEqual = true;
         hand1 = sortHand(hand1);
         hand2 = sortHand(hand2);
         Card[] strongestHand;
         
         strongestHand = findStrongerHand(hand1, hand2, handStrength);
-        if (strongestHand == hand1)
+        for (int i = 0; i < 5; i++)
+        {
+            if (!(strongestHand[i].getCardValue() == hand1[i].getCardValue() && strongestHand[i].getCardSuit() == hand1[i].getCardSuit()))
+                isEqual = false;
+
+        }
+
+        if (isEqual)
             handOneStronger = true;
+
+        isEqual = true;
         strongestHand = findStrongerHand(hand2, hand1, handStrength);
-        if (strongestHand == hand2)
+        for (int i = 0; i < 5; i++)
+        {
+            if (!(strongestHand[i].getCardValue() == hand2[i].getCardValue() && strongestHand[i].getCardSuit() == hand2[i].getCardSuit()))
+                isEqual = false;
+
+        }
+
+        if (isEqual)
             handTwoStronger = true;
 
         if (handOneStronger && handTwoStronger)
@@ -60,6 +66,7 @@ public class GameWin : MonoBehaviour
 
     public Card[] findStrongest()
     {
+        row = 0;
         Card[] strongestHand = new Card[5];
         Card[] temp = new Card[5];
         int handStrength, strongestHandStrength = 0;
@@ -81,26 +88,21 @@ public class GameWin : MonoBehaviour
                     strongestHand = temp.ToArray();
                 }
         }
-        return strongestHand;
+        return strongestHand.ToArray();
     }
 
-    public void generateAllCombinations(Card[] hand, Card[] data, int start, int end, int index, int r, Text display)
+    public void generateAllCombinations(Card[] hand, Card[] data, int start, int end, int index, int r)
     {
         if (index == r)
         {
             loadHands(data);
-            /*for (int l = 0; l < r; l++)
-            {
-                display.text += data[l].getCardValue() + " " + data[l].getCardSuit().ToString() + "  ";
-            }
-            display.text += "\n";*/
         }
             
 
         for (int i = start; (i <= end) && (end - i + 1 >= r - index); i++)
         {
             data[index] = hand[i];
-            generateAllCombinations(hand, data, i + 1, end, index + 1, r, display);
+            generateAllCombinations(hand, data, i + 1, end, index + 1, r);
         }
 
 
@@ -163,7 +165,7 @@ public class GameWin : MonoBehaviour
     public int getHandValue(Card[] hand)
     {
         hand = sortHand(hand);
-        int value = 0;
+        int value;
         //Arrays to store how many times a condition is met, split by faces
         //0-hearts, 1-Clubs, 2-Spades, 3-Diamonds
         int[] sameSuit = new int[4];
@@ -182,7 +184,7 @@ public class GameWin : MonoBehaviour
 
         bool fourOfKind = false;
         bool allSameSuit = false;
-        bool consNums = false;
+        bool consNums;
         bool fiveRoyals = false;
 
         int num;
@@ -278,7 +280,7 @@ public class GameWin : MonoBehaviour
     //If they tie, then whichever one is kept is unimportant
     public Card[] findStrongerHand(Card[] strongHand, Card[] hand, int handStrength)
     {
-        Card[] strongestHand = strongHand;
+        Card[] strongestHand;
         hand = sortHand(hand);
         strongHand = sortHand(strongHand);
         int strongHandPair, handPair;
@@ -289,7 +291,7 @@ public class GameWin : MonoBehaviour
             //Ace counts as higher card here
             case 1:
                 strongestHand = findBiggestHighCard(strongHand, hand);
-                return strongestHand;
+                return strongestHand.ToArray();
             //One Pair, we find the pairs and compare them
             //Take highest pair of the two
             //If a tie, compar the rest of hand
@@ -300,10 +302,10 @@ public class GameWin : MonoBehaviour
                     strongestHand = findBiggestHighCard(strongHand, hand);
                 else
                     if (strongHandPair > handPair)
-                        strongestHand = strongHand;
+                        strongestHand = strongHand.ToArray();
                     else
-                        strongestHand = hand;
-                return strongestHand;
+                        strongestHand = hand.ToArray();
+                return strongestHand.ToArray();
             //Two Pair, same as one pair
             //Except we compare the highest pair, then the next pair if a tie
             //And if its another tie, we compare the last card
@@ -318,16 +320,16 @@ public class GameWin : MonoBehaviour
                         strongestHand = findBiggestHighCard(strongHand, hand);
                     else
                         if (strongHandPair > handPair)
-                            strongestHand = strongHand;
+                            strongestHand = strongHand.ToArray();
                         else
-                            strongestHand = hand;
+                            strongestHand = hand.ToArray();
                 }
                 else
                     if (strongHandPair > handPair)
-                        strongestHand = strongHand;
+                        strongestHand = strongHand.ToArray();
                     else
-                        strongestHand = hand;
-                return strongestHand;
+                        strongestHand = hand.ToArray();
+                return strongestHand.ToArray();
             //Three of a kind same concept as one pair
             case 4:
                 strongHandPair = findStrongestPair(strongHand);
@@ -336,20 +338,20 @@ public class GameWin : MonoBehaviour
                     strongestHand = findBiggestHighCard(strongHand, hand);
                 else
                     if (strongHandPair > handPair)
-                    strongestHand = strongHand;
+                    strongestHand = strongHand.ToArray();
                 else
-                    strongestHand = hand;
-                return strongestHand;
+                    strongestHand = hand.ToArray();
+                return strongestHand.ToArray();
             //Straight, compare cards same as high card
             //However, ace counts as one in a straight
             //Save for a royal flush, but that is a different case
             case 5:
                 strongestHand = findBiggestStraight(strongHand, hand);
-                return strongestHand;
+                return strongestHand.ToArray();
             //Flush, same concept as high card
             case 6:
                 strongestHand = findBiggestHighCard(strongHand, hand);
-                return strongestHand;
+                return strongestHand.ToArray();
             //Full House, first we compare the three pair
             //If its a tie we compare the two pair, but this can be done same as high card
             case 7:
@@ -359,10 +361,10 @@ public class GameWin : MonoBehaviour
                     strongestHand = findBiggestHighCard(strongHand, hand);
                 else
                     if (strongHandPair > handPair)
-                    strongestHand = strongHand;
+                    strongestHand = strongHand.ToArray();
                 else
-                    strongestHand = hand;
-                return strongestHand;
+                    strongestHand = hand.ToArray();
+                return strongestHand.ToArray();
             //Four of a Kind, same concept as three of a kind and one pair 
             case 8:
                 strongHandPair = findStrongestPair(strongHand);
@@ -371,19 +373,19 @@ public class GameWin : MonoBehaviour
                     strongestHand = findBiggestHighCard(strongHand, hand);
                 else
                     if (strongHandPair > handPair)
-                    strongestHand = strongHand;
+                    strongestHand = strongHand.ToArray();
                 else
-                    strongestHand = hand;
-                return strongestHand;
+                    strongestHand = hand.ToArray();
+                return strongestHand.ToArray();
             //Straight flush, same concept as a straight
             case 9:
                 strongestHand = findBiggestStraight(strongHand, hand);
-                return strongestHand;
+                return strongestHand.ToArray();
             //Royal Flush, highest hand, can only tie with itself
             case 10:
-                return strongHand;               
+                return strongHand.ToArray();               
             default:
-                return strongHand;
+                return strongHand.ToArray();
         }
     }
     public int findStrongestPair(Card[] hand)
@@ -416,21 +418,21 @@ public class GameWin : MonoBehaviour
     {
 
         if (hand1[0].getCardValue() == 1 && hand1[0].getCardValue() < hand2[0].getCardValue())
-            return hand1;
+            return hand1.ToArray();
 
         if (hand2[0].getCardValue() == 1 && hand1[0].getCardValue() > hand2[0].getCardValue())
-            return hand2;
+            return hand2.ToArray();
 
-        for (int i = 4; i > 0; i--)
+        for (int i = 4; i >= 0; i--)
         {
             if (hand1[i].getCardValue() != hand2[i].getCardValue())
                 if (hand1[i].getCardValue() > hand2[i].getCardValue())
-                    return hand1;
+                    return hand1.ToArray();
                 else
-                    return hand2;
+                    return hand2.ToArray();
         }
 
-        return hand1;
+        return hand1.ToArray();
     }
 
     public Card[] findBiggestStraight(Card[] hand1, Card[] hand2)
@@ -439,12 +441,12 @@ public class GameWin : MonoBehaviour
         {
             if (hand1[i].getCardValue() != hand2[i].getCardValue())
                 if (hand1[i].getCardValue() > hand2[i].getCardValue())
-                    return hand1;
+                    return hand1.ToArray();
                 else
-                    return hand2;
+                    return hand2.ToArray();
         }
 
-        return hand1;
+        return hand1.ToArray();
     }
 
     public int findThreePairFullHouse(Card[] hand)

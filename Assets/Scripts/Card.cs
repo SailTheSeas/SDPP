@@ -77,14 +77,33 @@ public struct Card
             drawCard(drawnCards, x);
     }
 
-    public void displayCard(Text display, Card cardToDisplay)
+    public void displayCard(Text display, Image cardDisplay, Card cardToDisplay, Sprite[,] cardImages)
     {
         display.text += cardToDisplay.getCardSuit().ToString() + " " + cardToDisplay.getCardValue() + " ";
+        switch (cardToDisplay.getCardSuit())
+        {
+            case CardSuit.HEARTS:
+                cardDisplay.sprite = cardImages[0,cardToDisplay.getCardValue()-1];
+                break;
+            case CardSuit.CLUBS:
+                cardDisplay.sprite = cardImages[1, cardToDisplay.getCardValue() - 1];
+                break;
+            case CardSuit.SPADES:
+                cardDisplay.sprite = cardImages[2, cardToDisplay.getCardValue() - 1];
+                break;
+            case CardSuit.DIAMONDS:
+                cardDisplay.sprite = cardImages[3, cardToDisplay.getCardValue() - 1];
+                break;
+            default:
+                cardDisplay.sprite = cardImages[0, cardToDisplay.getCardValue() - 1];
+                break;
+        }
     }
 
-    public void clearDisplay(Text display)
+    public void clearDisplay(Text display, Image cardDisplay, Sprite cardBack)
     {
         display.text = " ";
+        cardDisplay.sprite = cardBack;
     }
 
 }
