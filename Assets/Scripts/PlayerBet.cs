@@ -24,10 +24,18 @@ public class PlayerBet : MonoBehaviour
 
    public bool canBet(int amount)
     {
-        if (amount > wallet || amount <= 0 || amount < minBet)
+        if (amount > wallet || amount <= 0)
             return false;
         else
             return true;
+    }
+
+    public bool canAllIn(int amount)
+    {
+        if (amount > (minBet * 4))
+            return true;
+        else
+            return false;
     }
 
     public void setMinBet(int amount)

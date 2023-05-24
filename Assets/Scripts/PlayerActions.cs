@@ -9,13 +9,14 @@ public class PlayerActions : MonoBehaviour
     private PlayerBet BT;
     [SerializeField]
     private string playerName = "Blank";
+    private bool isAllIn = false;
     private bool isFolded = false;
     private bool isTurn = false;
     private bool hasTakenTurn = true;
     private bool hasTakenAction = false;
     private PlayerType playerType;
     [SerializeField]
-    Button playerFoldButton, playerRaiseButton, playerCallButton;
+    Button playerFoldButton, playerRaiseButton, playerCallButton, playerAllInButton;
 
     int amountBet = 0;
     int gamesfolded = 0;
@@ -48,11 +49,12 @@ public class PlayerActions : MonoBehaviour
         GC = newGC;
     }
 
-    public void assignButtons(Button foldButton, Button raiseButton,Button callbutton)
+    public void assignButtons(Button foldButton, Button raiseButton,Button callButton, Button allInButton)
     {
         playerFoldButton = foldButton;
         playerRaiseButton = raiseButton;
-        playerCallButton = callbutton;
+        playerCallButton = callButton;
+        playerAllInButton = allInButton;
     }
 
     public void setButtonsState(bool state)
@@ -60,9 +62,10 @@ public class PlayerActions : MonoBehaviour
         playerFoldButton.interactable = state;
         playerRaiseButton.interactable = state;
         playerCallButton.interactable = state;
+        playerAllInButton.interactable = state;
     }
 
-    public void setButtonsStateEXCRaise(bool state)
+    public void setButtonsStateEXC(bool state)
     {
         playerFoldButton.interactable = state;
         playerCallButton.interactable = state;
@@ -136,6 +139,7 @@ public class PlayerActions : MonoBehaviour
                     else
                         amount = GC.getSmallBlind();
                     GC.potAddMoney(amount);
+                    BT.removeMoney(amount);
                     Debug.Log("Turn Over, betted " + amount);
                     setTurn(false);
                     setHasTakenTurn(true);
@@ -150,6 +154,7 @@ public class PlayerActions : MonoBehaviour
                     if (BT.canBet(amount))
                     {
                         GC.potAddMoney(amount);
+                        BT.removeMoney(amount);
                         Debug.Log("Turn Over, betted " + amount);
                         setTurn(false);
                         setHasTakenTurn(true);
@@ -171,6 +176,7 @@ public class PlayerActions : MonoBehaviour
                 if (BT.canBet(amount))
                 {
                     GC.potAddMoney(amount);
+                    BT.removeMoney(amount);
                     Debug.Log("Called raise:  " + amount);
                     setHasTakenAction(true);
                     setButtonsState(false);
@@ -199,6 +205,7 @@ public class PlayerActions : MonoBehaviour
                 if (BT.canBet(amount))
                 {
                     GC.potAddMoney(amount);
+                    BT.removeMoney(amount);
                     setTurn(false);
                     setButtonsState(false);
                     setHasTakenTurn(true);
@@ -211,6 +218,40 @@ public class PlayerActions : MonoBehaviour
                 }
                 else
                     Debug.Log("You cant raise");
+            }
+        }
+        else
+            Debug.Log("NOT YOUR TURN!!!!");
+    }
+
+    public void allIn()
+    {
+
+        if (isTurn)
+        {
+            int amount;
+            if (GC.getIsFirstRound() == true)
+            {
+                Debug.Log("You cant go all in yet");
+            }
+            else
+            {
+                amount = BT.getWallet();
+                if (BT.canBet(amount))
+                {
+                    GC.potAddMoney(amount);
+                    BT.removeMoney(amount);
+                    setTurn(false);
+                    setHasAllIn(true);
+                    setButtonsState(false);
+                    setHasTakenTurn(true);
+                    setHasTakenAction(true);
+                    amountBet += amount;
+                    Debug.Log("Turn Over, went all in with: " + amount);
+                    GC.setNextPlayer(false);                   
+                }
+                else
+                    Debug.Log("You cant go all in");
             }
         }
         else
@@ -245,6 +286,16 @@ public class PlayerActions : MonoBehaviour
     public void setHasTakenTurn(bool state)
     {
         hasTakenTurn = state;
+    }
+
+    public void setHasAllIn(bool state)
+    {
+        isAllIn = state;
+    }
+
+    public bool gethasAllIn()
+    {
+        return isAllIn;
     }
 
     public bool getIsFolded()

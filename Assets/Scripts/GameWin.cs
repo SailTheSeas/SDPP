@@ -301,7 +301,7 @@ public class GameWin : MonoBehaviour
                 if (strongHandPair == handPair)
                     strongestHand = findBiggestHighCard(strongHand, hand);
                 else
-                    if (strongHandPair > handPair)
+                    if ((strongHandPair > handPair || strongHandPair == 1) && handPair != 1)
                         strongestHand = strongHand.ToArray();
                     else
                         strongestHand = hand.ToArray();
@@ -319,13 +319,13 @@ public class GameWin : MonoBehaviour
                     if (strongHandPair == handPair)
                         strongestHand = findBiggestHighCard(strongHand, hand);
                     else
-                        if (strongHandPair > handPair)
+                        if ((strongHandPair > handPair || strongHandPair == 1) && handPair != 1)
                             strongestHand = strongHand.ToArray();
                         else
                             strongestHand = hand.ToArray();
                 }
                 else
-                    if (strongHandPair > handPair)
+                    if ((strongHandPair > handPair || strongHandPair == 1) && handPair != 1)
                         strongestHand = strongHand.ToArray();
                     else
                         strongestHand = hand.ToArray();
@@ -337,7 +337,7 @@ public class GameWin : MonoBehaviour
                 if (strongHandPair == handPair)
                     strongestHand = findBiggestHighCard(strongHand, hand);
                 else
-                    if (strongHandPair > handPair)
+                    if ((strongHandPair > handPair || strongHandPair == 1) && handPair != 1)
                     strongestHand = strongHand.ToArray();
                 else
                     strongestHand = hand.ToArray();
@@ -360,7 +360,7 @@ public class GameWin : MonoBehaviour
                 if (strongHandPair == handPair)
                     strongestHand = findBiggestHighCard(strongHand, hand);
                 else
-                    if (strongHandPair > handPair)
+                    if ((strongHandPair > handPair || strongHandPair == 1) && handPair != 1)
                     strongestHand = strongHand.ToArray();
                 else
                     strongestHand = hand.ToArray();
@@ -372,7 +372,7 @@ public class GameWin : MonoBehaviour
                 if (strongHandPair == handPair)
                     strongestHand = findBiggestHighCard(strongHand, hand);
                 else
-                    if (strongHandPair > handPair)
+                    if ((strongHandPair > handPair || strongHandPair == 1) && handPair != 1)
                     strongestHand = strongHand.ToArray();
                 else
                     strongestHand = hand.ToArray();

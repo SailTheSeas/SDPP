@@ -125,11 +125,15 @@ public class GameController : MonoBehaviour
     {
         newGame.interactable = false;
         drawCards.interactable = true;
+        minBet = 5;
+        minRaise = minBet * 2;
+        previousBet = minBet;
 
         for (int i = 0; i < 4; i++)
         {
             playerActions[i].clearDisplay();
             playerActions[i].setTurn(false);
+            playerActions[i].setMinBet(minBet);
             assessPlayerWallet(playerActions[i]);
         }
 
@@ -137,23 +141,25 @@ public class GameController : MonoBehaviour
 
         resetPlayerActions();
         resetPlayerTurns();
+        resetPlayerAllIn();
+        resetPlayerButtons();
 
         firstRound = true;
         roundCounter = 0;
 
         currentPlayer = findSmallBlind();
         TH.clearDisplay();
-
+        pot.resetPot();
 
         Debug.Log("New Game Begin");
     }
 
     public void waitForActions()
     {
-        if ((playerActions[0].getHasTakenAction() || !playerActions[0].getHasTakenTurn() || playerActions[0].getIsFolded()) &&
-            (playerActions[1].getHasTakenAction() || !playerActions[1].getHasTakenTurn() || playerActions[1].getIsFolded()) &&
-            (playerActions[2].getHasTakenAction() || !playerActions[2].getHasTakenTurn() || playerActions[2].getIsFolded()) &&
-            (playerActions[3].getHasTakenAction() || !playerActions[3].getHasTakenTurn() || playerActions[3].getIsFolded()))
+        if ((playerActions[0].getHasTakenAction() || !playerActions[0].getHasTakenTurn() || playerActions[0].getIsFolded() || playerActions[0].gethasAllIn()) &&
+            (playerActions[1].getHasTakenAction() || !playerActions[1].getHasTakenTurn() || playerActions[1].getIsFolded() || playerActions[1].gethasAllIn()) &&
+            (playerActions[2].getHasTakenAction() || !playerActions[2].getHasTakenTurn() || playerActions[2].getIsFolded() || playerActions[2].gethasAllIn()) &&
+            (playerActions[3].getHasTakenAction() || !playerActions[3].getHasTakenTurn() || playerActions[3].getIsFolded() || playerActions[3].gethasAllIn()))
         {
             resetPlayerActions();
             resetPlayerButtons();
@@ -208,8 +214,16 @@ public class GameController : MonoBehaviour
 
     public void setButtonState(PlayerActions player)
     {
-        if (player.getHasTakenTurn() && !player.getHasTakenAction())
-            player.setButtonsStateEXCRaise(!player.getIsFolded());
+        if (player.getHasTakenTurn() && !player.getHasTakenAction() && !player.gethasAllIn())
+            player.setButtonsStateEXC(!player.getIsFolded());
+    }
+
+    public void resetPlayerAllIn()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            playerActions[i].setHasAllIn(false);
+        }
     }
 
     public void resetPlayerActions()
@@ -294,15 +308,14 @@ public class GameController : MonoBehaviour
   
     public void playerTurn()
     {
-        if (currentPlayer.getPlayerFolded())
+        if (currentPlayer.getPlayerFolded() || currentPlayer.gethasAllIn())
         {
-            Debug.Log("Player " + currentPlayer.getPlayerName() + " is Folded, Skipping Turn");
+            Debug.Log("Player " + currentPlayer.getPlayerName() + " is Folded/All In, Skipping Turn");
             setNextPlayer(false);          
         }
         else
         {
             currentPlayer.setTurn(true);
-            currentPlayer.setMinBet(minBet);
             currentPlayer.setButtonsState(true);
             Debug.Log("Player " + currentPlayer.getPlayerName() + " your turn now");
         }
@@ -368,6 +381,10 @@ public class GameController : MonoBehaviour
         previousBet = minBet;
         minBet = amount;
         minRaise = 2 * amount;
+        for (int i = 0; i < 4; i++)
+        {
+            playerActions[i].setMinBet(minBet);
+        }
     }
 
     public PlayerActions findSmallBlind()
@@ -395,7 +412,7 @@ public class GameController : MonoBehaviour
 
             int[] playerStrengths = new int[4];
             int[] strongest = new int[4];
-            int[] possibleWinners = new int[4];
+            int[] possibleWinners = { -1 , -1 , -1 , -1 };
             int numOfStrongest = 0;
 
             currentPlayer = null;
@@ -424,7 +441,10 @@ public class GameController : MonoBehaviour
                     if (numOfStrongest > 0)
                     {
                         strongest = new int[4];
-                        possibleWinners = new int[4];
+                        for (int a = 0; a < 4; a++)
+                        {
+                            possibleWinners[a] = -1;
+                        }
                         numOfStrongest = 0;
                     }
                     strongest[0] = playerStrengths[i];
@@ -487,16 +507,18 @@ public class GameController : MonoBehaviour
                     {
                         if (numOfStrongest > 1)
                         {
-                            for (int m = 0; m < numOfStrongest - 1; m++)
+                            for (int m = index; (m < numOfStrongest - 1) && (m < numOfStrongest - index); m++)
                             {
                                 for (int k = 0; k < 5; k++)
                                 {
-                                    possibleWinnerHands[index + 1, k] = possibleWinnerHands[index + 2, k];
+                                    possibleWinnerHands[m + 1, k] = possibleWinnerHands[m + 2, k];
                                 }
-                                index++;
-                                possibleWinners[index + 1] = possibleWinners[index + 2];
-                            }
+                                possibleWinners[m + 1] = possibleWinners[m + 2];
+                                possibleWinners[m + 2] = -1;
 
+
+                            }
+                            index++;
                         }
                         else
                         {
@@ -508,16 +530,16 @@ public class GameController : MonoBehaviour
                     {
                         if (numOfStrongest > 1)
                         {
-                            for (int m = 0; m < numOfStrongest - 1; m++)
+                            for (int m = index; m < numOfStrongest ; m++)
                             {
                                 for (int k = 0; k < 5; k++)
                                 {
-                                    possibleWinnerHands[index, k] = possibleWinnerHands[index + 1, k];
+                                    possibleWinnerHands[m, k] = possibleWinnerHands[m + 1, k];
                                 }
-                                index++;
-                                possibleWinners[index] = possibleWinners[index + 1];
+                                possibleWinners[m] = possibleWinners[m + 1];
+                                possibleWinners[m + 1] = -1;
                             }
-
+                            index++;
                         }
                         else
                         {
@@ -539,11 +561,14 @@ public class GameController : MonoBehaviour
 
             if (allTied)
             {
-                for (int s = 0; s < numOfStrongest + 1; s++)
+
+                for (int s = 1; s < numOfStrongest + 1; s++)
                 {
-                    Debug.Log(playerActions[possibleWinners[s]].getPlayerName() + " is one of the winners and has won: " + pot.getPot() + " moneys");
-                    payOutWinners(playerActions[possibleWinners[s]], 1, 0);
+                    Debug.Log(playerActions[possibleWinners[s]].getPlayerName() + " is one of the winners and has won: " + pot.getSplitPotValue(numOfStrongest + 1) + " moneys");
+                    payOutWinners(playerActions[possibleWinners[s]], numOfStrongest + 1, 0);
                 }
+                payOutWinners(playerActions[possibleWinners[0]], numOfStrongest + 1, pot.getRemainder());
+                Debug.Log(playerActions[possibleWinners[1]].getPlayerName() + " is one of the winners and has won: " + pot.getSplitPotValue(numOfStrongest + 1) + pot.getRemainder() + " moneys");
             }
             else
             {
