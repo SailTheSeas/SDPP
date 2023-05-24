@@ -32,13 +32,13 @@ public class PlayerTimeout : NetworkBehaviour
         StartCoroutine(coroutine);
     }
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
             EndTurnTimer();
         }
-    }
+    }*/
     public void EndTurnTimer()  //KE - I am hoping that the player will have to press a button to decide their action - this function will be added to the button to stop the timer for the player
     {
         StopCoroutine(coroutine);

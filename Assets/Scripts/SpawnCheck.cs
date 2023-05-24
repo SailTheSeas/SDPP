@@ -23,7 +23,7 @@ public class SpawnCheck : MonoBehaviour
 
     public void enterName()
     {
-        playerName = input.name;
+        playerName = input.text;
         input.text = " ";
         changeName();
     }

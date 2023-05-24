@@ -9,6 +9,7 @@ public class ChatBehaviour : NetworkBehaviour
     [SerializeField] private GameObject chatBox = null;
     [SerializeField] private GameObject message=null;
     [SerializeField] private Button sendButton =null;
+    [SerializeField] private Text nameCanvas;
 
     //KE - runs similarly to "update"
     //Checks if the chat message is too long and deactivates the send button locally when it is
@@ -22,6 +23,10 @@ public class ChatBehaviour : NetworkBehaviour
             sendButton.interactable = true;
         }
     }
+    private void Start()
+    {
+        nameCanvas = GameObject.FindGameObjectWithTag("Login").GetComponentInChildren<Text>();
+    }
 
     //KE - When a client clicks the send button, send the message in the inputfield to the server and clear the input field
     [Client] public void Send()
@@ -33,21 +38,21 @@ public class ChatBehaviour : NetworkBehaviour
         string msg = inputField.text;
         inputField.text = string.Empty;
 
-        CmdSpawnText(msg);
+        CmdSpawnText(msg, nameCanvas.text);
     }
     
     //KE - message is sent to the server. The server validates the message and communicates it to each client. 
-    [Command (requiresAuthority = false)] private void CmdSpawnText(string msg)
+    [Command (requiresAuthority = false)] private void CmdSpawnText(string msg, string playerName)
     {
-        RpcChatUpdate(msg);
+        RpcChatUpdate(msg, playerName);
     }
 
     //KE - Send the message from the server to each clients.
     //Checks the number of messages sent. If the numner is too high, then the oldest message gets deleted
-    [ClientRpc] void RpcChatUpdate(string msg)
+    [ClientRpc] void RpcChatUpdate(string msg, string playerName)
     {
         GameObject sent = Instantiate(message);
-        sent.GetComponent<Text>().text = "Player name: " + msg;
+        sent.GetComponent<Text>().text = playerName + ": " + msg;
         sent.transform.parent = chatBox.transform;
         Debug.Log(chatBox.transform.childCount);
 
