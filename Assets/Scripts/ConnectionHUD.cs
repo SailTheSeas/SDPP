@@ -8,9 +8,13 @@ public class ConnectionHUD : MonoBehaviour
 {
     [SerializeField] GameObject ClientButton;
     [SerializeField] GameObject ServerButton;
+    NetworkManager manager;
+    [SerializeField] Text update;
     private void Start()
     {
-        if (Application.platform == RuntimePlatform.WindowsEditor)
+        update.text = "";
+        manager = GetComponent<NetworkManager>();
+        if (Application.platform == RuntimePlatform.WindowsPlayer)
         {
             ClientButton.SetActive(false);
             Debug.Log("I know you're playing this in the windows version of Unity");
@@ -18,6 +22,23 @@ public class ConnectionHUD : MonoBehaviour
         if(Application.platform==RuntimePlatform.WebGLPlayer)
         {
             ServerButton.SetActive(false);
+        }
+    }
+    public void StartServer()
+    {
+
+    }
+    public void ConnectClient()
+    {
+        if(!NetworkServer.active)
+        {
+            update.text = "Please start the server first";
+            Debug.Log("sTART THE SERVER FIRST");
+        }
+        else
+        {
+            update.text = "Connecting to the server";
+            Debug.Log("the server is upand runing");
         }
     }
 }
