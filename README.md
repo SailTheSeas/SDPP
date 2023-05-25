@@ -1,5 +1,5 @@
 # SDPP
-Software Project
+Software Project Backend Briefing
 
 
 # Where to Navigate Scripts
