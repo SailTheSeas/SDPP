@@ -41,9 +41,19 @@ To access the MySQL database server, navigate to the PHPmyAdmin page.
 The phpMyAdmin page is where you have control over the databases.
 
 # executing php files on the server
+In order to execute php files on the server, you need to navigate to the htdocs folder within the opt/lampp directory or whichever directory XAMPP was installed in. 
+Within the htdocs folder is where php scripts can be saved. This will allow them to be run on the server by simply navigating to localhost/(the directory that leads to the php file name)
+
+For example : localhost/phpFolder/helloworld.php
+
 
 # turning on the server upon return
-The server needs to be turned on everytime int
+The server needs to be turned on everytime in order to utilise it. 
+To do this, you need to navigate to the directory XAMPP is installed. This should be the opt/lampp directory.
+After which run the the manager-linux-x64.run file with : sudo./(filename.run)
+
+This will return the wizard with which you can use to turn back on the servers, and access them.
+
 
 
 
