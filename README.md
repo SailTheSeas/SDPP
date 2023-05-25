@@ -15,7 +15,7 @@ The class Input Validation checks and validates user input.
 
 
 # Setting Up PHP Server
-The server was set up utilising LAMPP. 
+The server was set up utilising XAMPP. 
 You will thus need to install :
 * PHP from php.net to run php, as well as any text editor
 * To install Apache2, and MySQL
