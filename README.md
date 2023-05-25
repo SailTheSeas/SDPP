@@ -20,3 +20,38 @@ You will thus need to install :
 * PHP from php.net to run php, as well as any text editor
 * To install Apache2, and MySQL
 * To install LAMPP
+
+# if on debian system
+Step 1, download Xampp from the apache friends website
+give the installer file read write priveledges. Use the command : sudo chmod 755 (installer-file-name.run)
+
+Then you can install the xampp server with sudo ./(installer-file-name.run)
+
+This opens the XAMPP setup wizard when complete. Utilise the directory opt/lampp as the place XAMPP will be installed to.
+XAMPP is then finally installed onto the computer.
+
+When finsihed and you launch XAMPP for the first time, click on manage servers.
+Then start the Apache Web Server, and start the MySQL Database server.
+
+If the servers are not able to start, it might mean that there is a pre-exisisting server installed on your pc. You will therefore only need to configure the port numbers to an unused port.
+While the servers are running, you can now access them on the web browser by typing localhost. If the port is not the default, you will access localhost with the port you provided like localhost:81.
+
+To access the MySQL database server, navigate to the PHPmyAdmin page.
+
+The phpMyAdmin page is where you have control over the databases.
+
+# executing php files on the server
+
+# turning on the server upon return
+The server needs to be turned on everytime int
+
+
+
+
+
+
+
+
+
+
+
