@@ -19,7 +19,7 @@ The server was set up utilising XAMPP.
 You will thus need to install :
 * PHP from php.net to run php, as well as any text editor
 * To install Apache2, and MySQL
-* To install LAMPP
+* To install XAMPP
 
 # if on debian system
 Step 1, download Xampp from the apache friends website
