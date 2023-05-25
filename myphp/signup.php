@@ -54,16 +54,8 @@ if ($conn->query($sql)===TRUE) {
 }
 
 
-/*Now,consider a method in which you break up the user password
-Into two things, and hash it to make it more secure
-*/
-
-
-
 //Prepared statements variation is more useful against SQL injections
 //can be used for inserting, updating, maybe selecting
-
-
 
 
 

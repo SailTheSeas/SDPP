@@ -27,7 +27,7 @@ if($match === TRUE){
 
 
 //$sql = "SELECT username FROM users WHERE username = '$username'";
-// MAYBE THE OUPUT IS LITERALLY JUST THE USERNAME TABLE
+// MAYBE THE OUTPUT IS LITERALLY JUST THE USERNAME TABLE
 $sql = "SELECT * FROM users WHERE username = '".$username."';";
 
 $results = $conn->query($sql);

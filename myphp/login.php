@@ -27,10 +27,6 @@ $userpass = clean_input($userpass);
 
 //// Data validation
 
-//Password hashing
-$securePass = password_hash($userpass,PASSWORD_DEFAULT);
-$match = password_verify($userpass,$securePass);
-
 //Get information from the Unity form
 //Create variables that will store the $_POSTED FIELD from the unity form.
 //Form data was sent with the POST method and is retrieved in PHP using POST.
@@ -48,7 +44,7 @@ if ($results->num_rows == 1 ){  /* the function num rows checks to see if only o
      for our desired user is found*/
 
     $row = $results->fetch_assoc(); //fetch assoc puts all the results into an associative array
-    if ($securePass=== $row["password"]){
+    if ( password_verify($userpass,$row["password"])===TRUE){
         echo "0. Successful login as password matches". "\t";
         echo $row["userID"]. "\t";
         echo $row["NoGames"] ."\t";
