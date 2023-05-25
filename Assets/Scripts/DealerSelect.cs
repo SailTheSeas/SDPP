@@ -24,9 +24,4 @@ public class DealerSelect : NetworkBehaviour
             dealer.SetActive(true);
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

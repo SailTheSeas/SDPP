@@ -5,8 +5,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class GameController : MonoBehaviour
+public class GameController : NetworkBehaviour
 {
     [SerializeField]
     PlayerActions[] playerActions = new PlayerActions[4];
@@ -55,7 +56,7 @@ public class GameController : MonoBehaviour
             }
         }
     }
-    public void gameStart(Button starter)
+    public void cmdGameStart(Button starter)
     {
         for (int i = 0; i < 13; i++)
         {
@@ -76,7 +77,6 @@ public class GameController : MonoBehaviour
         playerThreeType = PlayerType.BIG_BLIND;
         playerFourType = PlayerType.NONE;
         setPlayerTypes(playerOneType, playerTwoType, playerThreeType, playerFourType);
-
         TH = this.GetComponent<TableHand>();
         pot = this.GetComponent<Pot>();
         GW = this.GetComponent<GameWin>();
@@ -136,7 +136,6 @@ public class GameController : MonoBehaviour
     {
         TH.reshuffle();
     }
-
     public void nextGame()
     {
         newGame.interactable = false;

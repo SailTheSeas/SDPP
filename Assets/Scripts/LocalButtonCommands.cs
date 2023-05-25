@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using Mirror;
 
 
 //Unity Buttons cannot call from functions that already exist before the button has been instantiated in the scene.
 //This script is attached to the prefab that the button is on, so that the functions on the GameController and PlayerActions scripts can be called with the button during runtime
+//We can find specific gameobjects by reference 
 public class LocalButtonCommands : MonoBehaviour
 {
     GameController game;
@@ -34,9 +36,9 @@ public class LocalButtonCommands : MonoBehaviour
     {
         player.call();
     }
-    public void GameStart()
+    [Client]public void GameStart()
     {
-        game.gameStart(startGame);
+        game.cmdGameStart(startGame);
     }
     public void HandOutCards()
     {

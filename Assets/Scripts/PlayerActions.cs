@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class PlayerActions : MonoBehaviour
+using Mirror;
+public class PlayerActions : NetworkBehaviour
 {
     private GameController GC;
     private PlayerHand PH;
@@ -17,7 +18,7 @@ public class PlayerActions : MonoBehaviour
     private PlayerType playerType;
     [SerializeField]
     Button playerFoldButton, playerRaiseButton, playerCallButton, playerAllInButton;
-
+    //public GameObject test;
     int amountBet = 0;
     int gamesfolded = 0;
     int gamesWon = 0;
@@ -39,6 +40,7 @@ public class PlayerActions : MonoBehaviour
 
     public void createPlayer(TableHand newTH, GameController newGC, int newMinBet,int money)
     {
+        //test.SetActive(true);
         assignTable(newTH);
         assignGameController(newGC);
         setMinBet(newMinBet);
