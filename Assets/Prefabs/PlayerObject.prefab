@@ -112,6 +112,9 @@ GameObject:
   - component: {fileID: 2833693446789033366}
   - component: {fileID: 6823909800462012103}
   - component: {fileID: -145398010677958785}
+  - component: {fileID: 1229852352148105029}
+  - component: {fileID: 8996890088789005763}
+  - component: {fileID: 8985134034015620407}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -181,6 +184,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: Player1
+--- !u!114 &1229852352148105029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833693446789033352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10beb9bae10ebf64aa4ba1314f00fda9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: Blank
+  playerFoldButton: {fileID: 0}
+  playerRaiseButton: {fileID: 0}
+  playerCallButton: {fileID: 0}
+  playerAllInButton: {fileID: 0}
+--- !u!114 &8996890088789005763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833693446789033352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a80b4d4528778d64a97fc329921e2d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardOne: {fileID: 0}
+  cardTwo: {fileID: 0}
+--- !u!114 &8985134034015620407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833693446789033352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deef79f8941eba046b812c507fefbfe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4697614288741346765
 GameObject:
   m_ObjectHideFlags: 0

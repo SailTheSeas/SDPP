@@ -30,6 +30,11 @@ public class PlayerHand : MonoBehaviour
 
         showCards();
     }
+    private void Awake()
+    {
+        cardOne = GameObject.FindGameObjectWithTag("PlayerCard1").GetComponent<Image>();
+        cardTwo = GameObject.FindGameObjectWithTag("PlayerCard2").GetComponent<Image>();
+    }
 
     public Card getCard(int num)
     {

@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Offline_Connect_Screen.unity
+- path: Assets/Scenes/Online_Game_Screen.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

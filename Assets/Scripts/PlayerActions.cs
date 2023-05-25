@@ -27,6 +27,14 @@ public class PlayerActions : MonoBehaviour
     {
         PH = this.GetComponent<PlayerHand>();
         BT = this.GetComponent<PlayerBet>();
+        
+    }
+    private void Awake()
+    {
+        playerFoldButton = GameObject.FindGameObjectWithTag("Fold").GetComponent<Button>();
+        playerRaiseButton = GameObject.FindGameObjectWithTag("Raise").GetComponent<Button>();
+        playerCallButton = GameObject.FindGameObjectWithTag("Call").GetComponent<Button>();
+        playerAllInButton = GameObject.FindGameObjectWithTag("AllIn").GetComponent<Button>();
     }
 
     public void createPlayer(TableHand newTH, GameController newGC, int newMinBet,int money)

@@ -12,6 +12,15 @@ TagManager:
   - NetworkManager
   - Player3
   - Player4
+  - PlayerCard1
+  - PlayerCard2
+  - Call
+  - AllIn
+  - Undefined
+  - Raise
+  - Fold
+  - StartButton
+  - Dealer
   layers:
   - Default
   - TransparentFX

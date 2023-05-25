@@ -44,14 +44,14 @@ public class GameController : MonoBehaviour
 
     public void SetPlayer(PlayerActions player)
     {
+        Debug.Log("pLAYER: " + player);
         for(int i=0; i<4; i++)
         {
-            if (playerActions[i]!=null)
+            if (playerActions[i] == null)
             {
-                i++;
-            }else
-            {
+                Debug.Log("cheese");
                 playerActions[i] = player;
+                break;
             }
         }
     }
@@ -94,6 +94,7 @@ public class GameController : MonoBehaviour
 
     private void handOutCards()
     {
+        TH = GameObject.FindGameObjectWithTag("GameController").GetComponent<TableHand>();
         drawCards.interactable = false;
         TH.newRound();
         playerActions[0].drawCards();
