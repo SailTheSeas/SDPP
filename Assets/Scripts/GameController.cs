@@ -44,12 +44,12 @@ public class GameController : MonoBehaviour
 
     public void SetPlayer(PlayerActions player)
     {
-        Debug.Log("pLAYER: " + player);
+        //Debug.Log("pLAYER: " + player);
         for(int i=0; i<4; i++)
         {
             if (playerActions[i] == null)
             {
-                Debug.Log("cheese");
+                //Debug.Log("cheese");
                 playerActions[i] = player;
                 break;
             }
@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
             cardImages[3, i] = diamonds[i];
         }
         starter.interactable = false;
+        drawCards = GameObject.FindGameObjectWithTag("DrawCards").GetComponent<Button>();
         drawCards.interactable = true;
         previousBet = 0;
         smallBlind = (int)(bigBlind / 2);
@@ -92,7 +93,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Game Started");
     }
 
-    private void handOutCards()
+    public void handOutCards()
     {
         TH = GameObject.FindGameObjectWithTag("GameController").GetComponent<TableHand>();
         drawCards.interactable = false;

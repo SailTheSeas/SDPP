@@ -31,10 +31,10 @@ public class PlayerActions : MonoBehaviour
     }
     private void Awake()
     {
-        playerFoldButton = GameObject.FindGameObjectWithTag("Fold").GetComponent<Button>();
-        playerRaiseButton = GameObject.FindGameObjectWithTag("Raise").GetComponent<Button>();
-        playerCallButton = GameObject.FindGameObjectWithTag("Call").GetComponent<Button>();
-        playerAllInButton = GameObject.FindGameObjectWithTag("AllIn").GetComponent<Button>();
+        playerFoldButton = this.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Button>();
+        playerRaiseButton = this.transform.GetChild(1).GetChild(0).GetChild(5).GetComponent<Button>();
+        playerCallButton = this.transform.GetChild(1).GetChild(0).GetChild(4).GetComponent<Button>();
+        playerAllInButton = this.transform.GetChild(1).GetChild(0).GetChild(3).GetComponent<Button>();
     }
 
     public void createPlayer(TableHand newTH, GameController newGC, int newMinBet,int money)

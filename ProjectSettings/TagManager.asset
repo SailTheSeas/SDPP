@@ -21,6 +21,7 @@ TagManager:
   - Fold
   - StartButton
   - Dealer
+  - DrawCards
   layers:
   - Default
   - TransparentFX

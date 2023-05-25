@@ -32,8 +32,8 @@ public class PlayerHand : MonoBehaviour
     }
     private void Awake()
     {
-        cardOne = GameObject.FindGameObjectWithTag("PlayerCard1").GetComponent<Image>();
-        cardTwo = GameObject.FindGameObjectWithTag("PlayerCard2").GetComponent<Image>();
+        cardOne = this.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>();
+        cardTwo = this.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>();
     }
 
     public Card getCard(int num)

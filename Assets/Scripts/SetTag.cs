@@ -7,15 +7,14 @@ public class SetTag : MonoBehaviour
     public string player = "Player1";
     // Start is called before the first frame update
     GameController controller;
-    GameObject dealer;
+    //GameObject dealer;
     private void Awake()
     {
-        dealer = GameObject.FindGameObjectWithTag("Dealer");
-        dealer.SetActive(true);
         SetPlayerTag();
         SetPlayer();
-        Debug.Log(dealer);
-
+        //Debug.Log(dealer);
+        /*dealer = this.transform.GetChild(1).GetChild(1).gameObject;
+        dealer.SetActive(false);*/
     }
     void SetPlayerTag()
     {
@@ -42,11 +41,13 @@ public class SetTag : MonoBehaviour
 
     void SetPlayer()
     {
-        Debug.Log(this.gameObject);
+        //Debug.Log(this.gameObject);
         controller.SetPlayer(this.gameObject.GetComponent<PlayerActions>());
+
         if(!this.gameObject.CompareTag("Player1"))
         {
-            dealer.SetActive(false);
+            Debug.Log("isn't p1");
+            //dealer.SetActive(false);
         }
     }
 }
