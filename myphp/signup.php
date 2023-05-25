@@ -17,6 +17,22 @@ if ($conn->connect_error) {
     die("404". $conn->connect_error . "Connection to database failed"  );
 }
 
+//Validate data
+function clean_input($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+$username = clean_input($username);
+$userpass = clean_input($userpass);
+
+//// Data validation
+
+//Password hashing
+$securePass = password_hash($userpass,PASSWORD_DEFAULT);
+
 
 //Now that we have the data, interact with the database
 //We want to utilise INSERT INTO, in order to add new user to our database
@@ -28,7 +44,7 @@ $sql = "SELECT username FROM users WHERE username = '$username'";
 if ($conn->query($sql)===TRUE) {
     die( "301". " user already exists" );
 } else {  //Use SQL to add that user to the Database
-        $sql = "INSERT INTO users(username,password) VALUES ('$username','$userpass')";
+        $sql = "INSERT INTO users(username,password) VALUES ('$username','$securePass')";
 
         if ($conn->query($sql) === TRUE) {
             echo "0 successfully added a new user to database";
@@ -37,9 +53,18 @@ if ($conn->query($sql)===TRUE) {
         }
 }
 
+
 /*Now,consider a method in which you break up the user password
 Into two things, and hash it to make it more secure
 */
+
+
+
+//Prepared statements variation is more useful against SQL injections
+//can be used for inserting, updating, maybe selecting
+
+
+
 
 
 // Close connection

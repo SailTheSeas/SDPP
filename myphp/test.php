@@ -15,6 +15,16 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$securePass = password_hash("password",PASSWORD_DEFAULT);
+echo $securePass;
+$match = password_verify("password",$securePass);
+
+if($match === TRUE){
+    echo "   result of hash is  ". $match . " this  ";
+}else{
+    echo "FALSE OUTCOME";
+}
+
 
 //$sql = "SELECT username FROM users WHERE username = '$username'";
 // MAYBE THE OUPUT IS LITERALLY JUST THE USERNAME TABLE
@@ -39,6 +49,7 @@ if ($results->num_rows > 0 ){  /* the function num rows checks to see if only on
 } else{
     die("302". "This user does not exist");
 }
+
 
 
 /*Now,consider a method in which you break up the user password

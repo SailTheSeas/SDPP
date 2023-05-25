@@ -15,7 +15,7 @@ $updatedWins = $_POST["won"];
 $conn = new mysqli($servername, $_userDB, $_passwordDB, $database);
 
 //Access player records in database
-$sql = "=UPDATE users SET NoGames = '$updatedPlayed', NoWins = '$updatedWins' WHERE username = '$username'";
+$sql = "UPDATE users SET NoGames = '$updatedPlayed', NoWins = '$updatedWins' WHERE username = '$username'";
 //$sql = "SELECT username FROM users WHERE username = '".$username."';"; //Proper way to write
 
 $results = $conn->query($sql);

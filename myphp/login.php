@@ -14,6 +14,23 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+//Validate data
+function clean_input($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+$username = clean_input($username);
+$userpass = clean_input($userpass);
+
+//// Data validation
+
+//Password hashing
+$securePass = password_hash($userpass,PASSWORD_DEFAULT);
+$match = password_verify($userpass,$securePass);
+
 //Get information from the Unity form
 //Create variables that will store the $_POSTED FIELD from the unity form.
 //Form data was sent with the POST method and is retrieved in PHP using POST.
@@ -31,7 +48,7 @@ if ($results->num_rows == 1 ){  /* the function num rows checks to see if only o
      for our desired user is found*/
 
     $row = $results->fetch_assoc(); //fetch assoc puts all the results into an associative array
-    if ($userpass === $row["password"]){
+    if ($securePass=== $row["password"]){
         echo "0. Successful login as password matches". "\t";
         echo $row["userID"]. "\t";
         echo $row["NoGames"] ."\t";
@@ -42,10 +59,6 @@ if ($results->num_rows == 1 ){  /* the function num rows checks to see if only o
 } else{
     die("302". "This user does not exist");
 }
-
-/*Now,consider a method in which you break up the user password
-Into two things, and hash it to make it more secure
-*/
 
 
 // Close connection
