@@ -41,6 +41,20 @@ public class GameController : MonoBehaviour
     Button newGame, drawCards;
     private PlayerType playerOneType, playerTwoType, playerThreeType, playerFourType;
     private PlayerActions currentPlayer;
+
+    public void SetPlayer(PlayerActions player)
+    {
+        for(int i=0; i<4; i++)
+        {
+            if (playerActions[i]!=null)
+            {
+                i++;
+            }else
+            {
+                playerActions[i] = player;
+            }
+        }
+    }
     public void gameStart(Button starter)
     {
         for (int i = 0; i < 13; i++)
