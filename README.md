@@ -46,6 +46,9 @@ Within the htdocs folder is where php scripts can be saved. This will allow them
 
 For example : localhost/phpFolder/helloworld.php
 
+Access first needs to be given to the htdocs folder in older to create/read and execute files.
+Using the command : sudo chown -R $USER:$USER (name-of-folder-containing php scripts)
+
 
 # turning on the server upon return
 The server needs to be turned on everytime in order to utilise it. 
