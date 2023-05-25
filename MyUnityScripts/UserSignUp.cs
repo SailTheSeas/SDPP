@@ -16,14 +16,17 @@ public class UserSignUp : MonoBehaviour
     //Create variables for the form, (username and password) 
     public TMP_InputField nameField;
     public TMP_InputField passwordField;
-    
+
+    public TMP_Text errorText;
+    public Button submitBtn;
+
     //Function on a button, will start coroutines
     public void ConnectOnClick()
     {
         StartCoroutine(SignUp());
     }
-    
-    IEnumerator SignUp()
+
+   IEnumerator SignUp()
     {
         //Create a Form that takes in username and password
         WWWForm form = new WWWForm();
@@ -46,8 +49,31 @@ public class UserSignUp : MonoBehaviour
         {   
             Debug.Log("Success");
             Debug.Log(www.downloadHandler.text);
+            DBController.Username = nameField.text;
+
+
+            //DBController.UserID = int.Parse(recordList[1]);
+            DBController.NoGames = 0;
+            DBController.NoWins = 0;
             SceneManager.LoadScene(3);
         }
  
     }
+
+   public void CheckInput()
+   {
+       if (nameField.text.Length > 16 || passwordField.text.Length > 32)
+       {
+           errorText.text = "You cannot enter more characters";
+           submitBtn.interactable = false;
+
+       }
+       else
+       {
+           submitBtn.interactable = true;
+           errorText.text = " ";
+       }
+   }
+
+   
 }
