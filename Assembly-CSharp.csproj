@@ -80,6 +80,8 @@
     <Compile Include="Assets\Scripts\SetTag.cs" />
     <Compile Include="Assets\Scripts\PlayerActions.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\AddPlayerToMultiplayer.cs" />
+    <Compile Include="Assets\Scripts\PlayerName.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />

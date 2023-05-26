@@ -16,8 +16,8 @@ public class SpawnCheck : MonoBehaviour
     }*/
     private void Start()
     {
-        input = GameObject.FindGameObjectWithTag("Login").GetComponentInChildren<InputField>();
-        displayName = GameObject.FindGameObjectWithTag("Username").GetComponent<Text>();
+        /*input = GameObject.FindGameObjectWithTag("Login").GetComponentInChildren<InputField>();
+        displayName = GameObject.FindGameObjectWithTag("Username").GetComponent<Text>();*/
         changeName();
     }
 

@@ -22,6 +22,8 @@ TagManager:
   - StartButton
   - Dealer
   - DrawCards
+  - Players
+  - Client
   layers:
   - Default
   - TransparentFX

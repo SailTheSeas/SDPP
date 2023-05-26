@@ -6,39 +6,54 @@ using Mirror;
 
 public class ConnectionHUD : MonoBehaviour
 {
-    [SerializeField] GameObject ClientButton;
-    [SerializeField] GameObject ServerButton;
+    [SerializeField] GameObject client;
+    [SerializeField] GameObject server;
     NetworkManager manager;
     NetworkManagerHUD hud;
-    [SerializeField] Text update;
+    /*[SyncVar]*/ bool serverStarted = false;
+    public Button clientButton;
+    //[SerializeField] Text update;
     private void Start()
     {
-        update.text = "";
+        clientButton.interactable = false;
+        clientButton = client.GetComponent<Button>();
+        //update.text = "";
         manager = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<NetworkManager>();
-        if (Application.platform == RuntimePlatform.WindowsPlayer)
+        /*if (Application.platform == RuntimePlatform.WindowsPlayer|| Application.platform==RuntimePlatform.WindowsEditor)
         {
             ClientButton.SetActive(false);
+            //ServerButton.SetActive(false);
             Debug.Log("I know you're playing this in the windows version of Unity");
         }
         if(Application.platform==RuntimePlatform.WebGLPlayer)
         {
             ServerButton.SetActive(false);
-        }
+        }*/
+        UpdateClientButton();
     }
     public void StartServer()
     {
         manager.StartServer();
+        serverStarted = true;
+        UpdateClientButton();
+    }
+    void UpdateClientButton()
+    {
+        //clientButton.interactable = serverStarted;
     }
     public void ConnectClient()
     {
-        if(!NetworkServer.active)
+        manager.StartClient();
+        if (!NetworkServer.active)
         {
-            update.text = "Please start the server first";
+
+            //update.text = "Please start the server first";
             Debug.Log("sTART THE SERVER FIRST");
         }
         else
         {
-            update.text = "Connecting to the server";
+            
+            //update.text = "Connecting to the server";
             Debug.Log("the server is upand runing");
         }
     }
