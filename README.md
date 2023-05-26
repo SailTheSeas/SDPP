@@ -79,7 +79,7 @@ $cfg['Servers'][$i]['password'] = 'root';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
 ~~~
-
+What needs to be done is to simply change the password to what it was changed to which in this case was root. Then the error should disappear as the configuration files match. 
 
 # turning on the server upon return
 The server needs to be turned on everytime in order to utilise it. 
