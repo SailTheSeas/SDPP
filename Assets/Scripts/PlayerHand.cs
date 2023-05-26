@@ -2,38 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using Mirror;
 
 public class PlayerHand : MonoBehaviour
 {
+    [SerializeField]
     private Card[] hand = new Card[2];
     [SerializeField]
     Image cardOne, cardTwo;
+    [SerializeField]
     Sprite[,] cardImages = new Sprite[4, 13];
     Sprite backImage;
-    TableHand TH;
+    PlayerActions PA;
+    [SerializeField]
+    //TableHand TH;
 
-    public void drawCards()
+    /*[Command (requiresAuthority=false)]*/public void drawCards()
     {
 
-        int numCardsInPlay = TH.getNumCardsInPlay();
+        int numCardsInPlay = PA.getNumOfCardsInPlay();
         Card[] cardsInPlay = new Card[numCardsInPlay];
         for (int i = 0; i < numCardsInPlay; i++)
         {
-            cardsInPlay[i] = TH.getCardInPlay(i);
+            cardsInPlay[i] = PA.getCardInPlay(i);
         }
 
         for (int i = 0; i < 2; i++)
         {
             hand[i].drawCard(cardsInPlay, numCardsInPlay);
-            TH.addCard(hand[i]);
+            PA.addCard(hand[i]);
         }
 
-        showCards();
+        //showCards();
     }
     private void Awake()
     {
-        cardOne = this.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>();
-        cardTwo = this.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<Image>();
+
+        cardOne = this.transform.parent.GetComponentInParent<Transform>().GetChild(1).GetChild(0).GetChild(4).GetComponent<Image>();
+        cardTwo = this.transform.parent.GetComponentInParent<Transform>().GetChild(1).GetChild(0).GetChild(5).GetComponent<Image>();
+    }
+
+    public void assignPlayer(PlayerActions newPA)
+    {
+        PA = newPA;
     }
 
     public Card getCard(int num)
@@ -48,16 +59,11 @@ public class PlayerHand : MonoBehaviour
     }
 
 
-    public void assignTable(TableHand newTH)
-    {
-        TH = newTH;
-    }
-
-    public void showCards()
+   public void showCards()
     {
         clearDisplay();
         hand[0].displayCard(cardOne, hand[0], cardImages);
-        hand[1].displayCard(cardTwo, hand[1], cardImages);
+        hand[0].displayCard(cardTwo, hand[1], cardImages);
     }
 
     public void clearDisplay()

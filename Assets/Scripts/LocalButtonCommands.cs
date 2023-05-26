@@ -38,7 +38,7 @@ public class LocalButtonCommands : MonoBehaviour
     }
     [Client]public void GameStart()
     {
-        game.cmdGameStart(startGame);
+        game.CmdGameStart(/*startGame*/);
     }
     public void HandOutCards()
     {

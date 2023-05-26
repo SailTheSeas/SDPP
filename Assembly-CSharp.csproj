@@ -64,12 +64,14 @@
     <Compile Include="Assets\Scripts\PlayerHand.cs" />
     <Compile Include="Assets\Scripts\PlayerActionsKevinTest.cs" />
     <Compile Include="Assets\Scripts\TableHand.cs" />
+    <Compile Include="Assets\Scripts\DealerSelect.cs" />
     <Compile Include="Assets\MyUnityScripts\UserLogIn.cs" />
     <Compile Include="Assets\MyUnityScripts\DBController.cs" />
     <Compile Include="Assets\Scripts\PlayerBet.cs" />
     <Compile Include="Assets\ParrelSync\Examples\CustomArgumentExample.cs" />
     <Compile Include="Assets\Scripts\Card.cs" />
     <Compile Include="Assets\Scripts\GameWin.cs" />
+    <Compile Include="Assets\Scripts\LocalButtonCommands.cs" />
     <Compile Include="Assets\MyUnityScripts\RecordsLink.cs" />
     <Compile Include="Assets\Scripts\TestCardDisplay.cs" />
     <Compile Include="Assets\MyUnityScripts\UserSignUp.cs" />
@@ -78,8 +80,6 @@
     <Compile Include="Assets\Scripts\SetTag.cs" />
     <Compile Include="Assets\Scripts\PlayerActions.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\DealerSelect.cs" />
-    <Compile Include="Assets\Scripts\LocalButtonCommands.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />

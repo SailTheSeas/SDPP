@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Mirror;
-public class PlayerActions : NetworkBehaviour
+//using Mirror;
+public class PlayerActions :/* NetworkBehaviour*/ MonoBehaviour
 {
+    [SerializeField]
     private GameController GC;
+    [SerializeField]
     private PlayerHand PH;
     private PlayerBet BT;
+    [SerializeField]
+    int playerNum;
     [SerializeField]
     private string playerName = "Blank";
     private bool isAllIn = false;
@@ -15,6 +19,7 @@ public class PlayerActions : NetworkBehaviour
     private bool isTurn = false;
     private bool hasTakenTurn = true;
     private bool hasTakenAction = false;
+    [SerializeField]
     private PlayerType playerType;
     [SerializeField]
     Button playerFoldButton, playerRaiseButton, playerCallButton, playerAllInButton;
@@ -32,26 +37,28 @@ public class PlayerActions : NetworkBehaviour
     }
     private void Awake()
     {
-        playerFoldButton = this.transform.GetChild(1).GetChild(0).GetChild(2).GetComponent<Button>();
-        playerRaiseButton = this.transform.GetChild(1).GetChild(0).GetChild(5).GetComponent<Button>();
-        playerCallButton = this.transform.GetChild(1).GetChild(0).GetChild(4).GetComponent<Button>();
-        playerAllInButton = this.transform.GetChild(1).GetChild(0).GetChild(3).GetComponent<Button>();
+        Debug.Log(this.transform.parent.GetComponentInParent<Transform>());
+        playerFoldButton = this.transform.parent.GetComponentInParent<Transform>().GetChild(1).GetChild(0).GetChild(0).GetComponent<Button>();
+        //this.transform.GetComponentInParent<Transform>().GetChild(1).GetChild(0).GetChild(2).GetComponent<Button>()
+        playerRaiseButton = this.transform.parent.GetComponentInParent<Transform>().GetChild(1).GetChild(0).GetChild(3).GetComponent<Button>();
+        playerCallButton = this.transform.parent.GetComponentInParent<Transform>().GetChild(1).GetChild(0).GetChild(2).GetComponent<Button>();
+        playerAllInButton = this.transform.parent.GetComponentInParent<Transform>().GetChild(1).GetChild(0).GetChild(1).GetComponent<Button>();
     }
 
-    public void createPlayer(TableHand newTH, GameController newGC, int newMinBet,int money)
+   /*[ClientRpc]*/public void createPlayer( GameController newGC, int newMinBet,int money, int newPlayerNum)
     {
         //test.SetActive(true);
-        assignTable(newTH);
+        PH.assignPlayer(this);
+        setPlayerNum(newPlayerNum);
         assignGameController(newGC);
         setMinBet(newMinBet);
         addMoney(money);
         PH.setCardImages(GC.getCardImages(), GC.getBackImage());
     }
-     
-
-    public void assignTable(TableHand TH)
+    
+    public void setPlayerNum(int newPlayerNum)
     {
-        PH.assignTable(TH);
+        playerNum = newPlayerNum;
     }
 
     public void assignGameController(GameController newGC)
@@ -90,7 +97,7 @@ public class PlayerActions : NetworkBehaviour
         BT.addMoney(amount);
     }
 
-    public void drawCards()
+    /*[ClientRpc]*/public void drawCards()
     {
         PH.drawCards();
     }
@@ -303,9 +310,29 @@ public class PlayerActions : NetworkBehaviour
         isAllIn = state;
     }
 
+    public int getPlayerNum()
+    {
+        return playerNum;
+    }
+
     public bool gethasAllIn()
     {
         return isAllIn;
+    }
+
+    public int getNumOfCardsInPlay()
+    {
+        return GC.getNumOfCardsInPlay();
+    }
+
+    public Card getCardInPlay(int i)
+    {
+        return GC.getCardInPlay(i);
+    }
+
+    public void addCard(Card newCard)
+    {
+        GC.addCardInPlay(newCard);
     }
 
     public bool getIsFolded()
@@ -366,6 +393,11 @@ public class PlayerActions : NetworkBehaviour
     public void isLower()
     {
         gamesLost++;
+    }
+
+    /*[ClientRpc]*/public void showCards()
+    {
+        PH.showCards();
     }
 
 }

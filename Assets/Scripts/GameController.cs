@@ -11,6 +11,8 @@ public class GameController : NetworkBehaviour
 {
     [SerializeField]
     PlayerActions[] playerActions = new PlayerActions[4];
+    [SerializeField]
+    DealerSelect[] playerStuff = new DealerSelect[4];
     TableHand TH;
     Pot pot;
     GameWin GW;
@@ -26,6 +28,7 @@ public class GameController : NetworkBehaviour
     [SerializeField]
     Sprite backImage;
 
+    Button starter;
     [SerializeField]
     int bigBlind;
     int smallBlind;
@@ -43,20 +46,27 @@ public class GameController : NetworkBehaviour
     private PlayerType playerOneType, playerTwoType, playerThreeType, playerFourType;
     private PlayerActions currentPlayer;
 
-    public void SetPlayer(PlayerActions player)
+    public void SetPlayer(PlayerActions player, DealerSelect notDealer)
     {
-        //Debug.Log("pLAYER: " + player);
-        for(int i=0; i<4; i++)
+        
+        for (int i = 0; i < 4; i++)
         {
             if (playerActions[i] == null)
             {
-                //Debug.Log("cheese");
+                Debug.Log("iNTHE LOOP");
+                Debug.Log(playerActions[i]);
                 playerActions[i] = player;
+                playerStuff[i] = notDealer;
+                Debug.Log(playerActions[i]);
                 break;
             }
         }
     }
-    public void cmdGameStart(Button starter)
+    [Command(requiresAuthority = false)] public void CmdGameStart(/*Button starter*/)
+    {
+        gameStart(/*starter*/);
+    }
+    [Server] public void gameStart(/*Button starter*/)
     {
         for (int i = 0; i < 13; i++)
         {
@@ -65,9 +75,10 @@ public class GameController : NetworkBehaviour
             cardImages[2, i] = spades[i];
             cardImages[3, i] = diamonds[i];
         }
-        starter.interactable = false;
-        drawCards = GameObject.FindGameObjectWithTag("DrawCards").GetComponent<Button>();
-        drawCards.interactable = true;
+        //starter = GameObject.FindGameObjectWithTag("StartButton").GetComponent<Button>();
+        //starter.interactable = false;
+        //drawCards = GameObject.FindGameObjectWithTag("DrawCards").GetComponent<Button>();
+       // drawCards.interactable = true;
         previousBet = 0;
         smallBlind = (int)(bigBlind / 2);
         minBet = bigBlind;
@@ -83,29 +94,73 @@ public class GameController : NetworkBehaviour
 
         TH.setCardImages(cardImages, backImage);
 
-        playerActions[0].createPlayer(TH, this, minBet, 1000);
-        playerActions[1].createPlayer(TH, this, minBet, 1000);
-        playerActions[2].createPlayer(TH, this, minBet, 1000);
-        playerActions[3].createPlayer(TH, this, minBet, 1000);
+
+        playerStuff[0].CreatePlayer(this, minBet, 1000, 0);
+        playerStuff[1].CreatePlayer(this, minBet, 1000, 1);
+        playerStuff[2].CreatePlayer(this, minBet, 1000, 2);
+        playerStuff[3].CreatePlayer(this, minBet, 1000, 3);
+        playerActions[0].createPlayer( this, minBet, 1000,0);
+        playerActions[1].createPlayer( this, minBet, 1000,1);
+        playerActions[2].createPlayer( this, minBet, 1000,2);
+        playerActions[3].createPlayer( this, minBet, 1000,3);
 
         currentPlayer = findSmallBlind();
 
         Debug.Log("Game Started");
     }
 
-    public void handOutCards()
+    [Command (requiresAuthority =false)]public void handOutCards()
     {
         TH = GameObject.FindGameObjectWithTag("GameController").GetComponent<TableHand>();
         drawCards.interactable = false;
         TH.newRound();
+        RPCDealPlayer();
+
+        TH.drawHand();
+
+        playerTurn();
+        //roundHandler();
+    }
+    [ClientRpc] void RPCDealPlayer()
+    {
+        /*
         playerActions[0].drawCards();
         playerActions[1].drawCards();
         playerActions[2].drawCards();
         playerActions[3].drawCards();
-        TH.drawHand();
-        Debug.Log("Cards Handed Out");
-        playerTurn();
-        //roundHandler();
+
+        playerActions[0].showCards();
+        playerActions[1].showCards();
+        playerActions[2].showCards();
+        playerActions[3].showCards();
+        
+        PlayerActions player = GetComponent<PlayerActions>();
+        player.drawCards();
+        player.showCards();
+        */
+       // GameObject player = GetComponent<GameObject>().CompareTag("");
+        if (this.gameObject.CompareTag("Player1"))
+        {
+            playerActions[0].drawCards();
+            playerActions[0].showCards();
+        }
+        if (this.gameObject.CompareTag("Player2"))
+        {
+            playerActions[1].drawCards();
+            playerActions[1].showCards();
+        }
+        if (this.gameObject.CompareTag("Player3"))
+        {
+            playerActions[2].drawCards();
+            playerActions[2].showCards();
+        }
+        if (this.gameObject.CompareTag("Player4"))
+        {
+            playerActions[3].drawCards();
+            playerActions[3].showCards();
+        }
+            Debug.Log("Cards Handed Out");
+
     }
 
     public void handOutTable()
@@ -119,7 +174,7 @@ public class GameController : NetworkBehaviour
         return roundCounter;
     }
 
-    public void setPlayerTypes(PlayerType playerOne, PlayerType playerTwo, PlayerType playerThree, PlayerType playerFour)
+    /*[ClientRpc]*/public void setPlayerTypes(PlayerType playerOne, PlayerType playerTwo, PlayerType playerThree, PlayerType playerFour)
     {
         playerOneType = playerOne;
         playerTwoType = playerTwo;
@@ -384,6 +439,21 @@ public class GameController : NetworkBehaviour
     public bool getIsRaised()
     {
         return raised;
+    }
+
+    public int getNumOfCardsInPlay()
+    {
+        return TH.getNumCardsInPlay();
+    }
+
+    public Card getCardInPlay(int i)
+    {
+        return TH.getCardInPlay(i);
+    }
+
+    public void addCardInPlay(Card newCard)
+    {
+        TH.addCard(newCard);
     }
 
     public int getRaiseMatchAmount()

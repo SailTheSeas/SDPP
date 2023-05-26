@@ -12,7 +12,7 @@ public class SetTag : MonoBehaviour
     {
         SetPlayerTag();
         SetPlayer();
-        //Debug.Log(dealer);
+        Debug.Log("kuhbjk");
         /*dealer = this.transform.GetChild(1).GetChild(1).gameObject;
         dealer.SetActive(false);*/
     }
@@ -41,13 +41,8 @@ public class SetTag : MonoBehaviour
 
     void SetPlayer()
     {
-        //Debug.Log(this.gameObject);
-        controller.SetPlayer(this.gameObject.GetComponent<PlayerActions>());
-
-        if(!this.gameObject.CompareTag("Player1"))
-        {
-            Debug.Log("isn't p1");
-            //dealer.SetActive(false);
-        }
+        Debug.Log((this.gameObject.transform.GetChild(2).GetComponent<PlayerActions>()));
+        Debug.Log(this.gameObject.GetComponent<DealerSelect>());
+        controller.SetPlayer(this.gameObject.transform.GetChild(2).GetComponent<PlayerActions>(), this.gameObject.GetComponent<DealerSelect>());
     }
 }

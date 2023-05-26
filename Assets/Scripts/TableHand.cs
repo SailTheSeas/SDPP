@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class TableHand : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class TableHand : MonoBehaviour
         return numCardsInPlay;
     }
 
-    public void setCardImages(Sprite[,] newCardImages, Sprite newBackImage)
+    /*[ClientRpc]*/public void setCardImages(Sprite[,] newCardImages, Sprite newBackImage)
     {
         cardImages = newCardImages;
         backImage = newBackImage;

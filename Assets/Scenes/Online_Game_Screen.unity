@@ -3364,6 +3364,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerStuff:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   hearts:
   - {fileID: 21300000, guid: a634f84a339f9494fbc2cb1f4dc8c634, type: 3}
   - {fileID: 21300000, guid: 8eea58118b8a535409a81e7c1ef85591, type: 3}
@@ -3379,7 +3384,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1c6633f301550ea4cb6958801ca8026d, type: 3}
   - {fileID: 21300000, guid: 87f8870ab639821448d4d4b42db33de0, type: 3}
   clubs:
-  - {fileID: 21300000, guid: 072875eeef213ab4899c9a1f962b420f, type: 3}
+  - {fileID: 21300000, guid: ec3a4990534d27e4e89084d12d83d2c8, type: 3}
   - {fileID: 21300000, guid: 6818b8aadcbb2ad43972f58746fcfc42, type: 3}
   - {fileID: 21300000, guid: f7e51926917b18e4db76cc1fb9f2d237, type: 3}
   - {fileID: 21300000, guid: 561f1f7cfaaec3f40bc2b097c3ce9617, type: 3}
@@ -5004,6 +5009,14 @@ PrefabInstance:
     - target: {fileID: 8844139417089392971, guid: 9d7cefc37bab1184f9f74fa593a42e84, type: 3}
       propertyPath: onlineScene
       value: Assets/Scenes/Online_Game_Screen.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844139417089392971, guid: 9d7cefc37bab1184f9f74fa593a42e84, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 2833693446789033352, guid: d86abba29e7ad584fbc842d573f37bf1, type: 3}
+    - target: {fileID: 8844139417089392971, guid: 9d7cefc37bab1184f9f74fa593a42e84, type: 3}
+      propertyPath: autoCreatePlayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8844139417089396404, guid: 9d7cefc37bab1184f9f74fa593a42e84, type: 3}
       propertyPath: m_RootOrder
