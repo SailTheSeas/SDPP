@@ -59,11 +59,6 @@ $_userDB= "root";
 $_passwordDB = "root";
 $database = "pokergameDB";
 
-//Form data was sent from Unity with the POST method and is retrieved in PHP using POST.
-
-$username = $_POST["username"];
-$userpass = $_POST["userpass"];
-
 //Create Connection
 
 $conn = new mysqli($servername, $_userDB, $_passwordDB,$database);
