@@ -63,7 +63,8 @@ $database = "pokergameDB";
 
 $conn = new mysqli($servername, $_userDB, $_passwordDB,$database);
 ~~~
-In order to properly run the php scripts on the server, some setup needs to made on the myphpAdmin page. To do this navigate to users and make sure that the root user, w
+In order to properly run the php scripts on the server, some setup needs to made on the myphpAdmin page. 
+To do this navigate to the user accounts page and make sure that the user with username "root", hostname "localhost", has passwords set to Yes. Then make it
 
 # turning on the server upon return
 The server needs to be turned on everytime in order to utilise it. 
