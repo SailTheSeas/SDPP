@@ -45,6 +45,6 @@ public class DealerSelect : NetworkBehaviour
     {
         //thisPlayer = playerActions.GetComponent<PlayerActions>();
         //if (this.gameObject.CompareTag("Player" + (playerNum + 1).ToString()))
-            thisPlayer.createPlayer(newGC, minBet, money, playerNum);
+        thisPlayer.createPlayer(newGC, minBet, money, playerNum);
     }
 }

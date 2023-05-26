@@ -7,6 +7,7 @@ public class SetTag : MonoBehaviour
     public string player = "Player1";
     // Start is called before the first frame update
     GameController controller;
+
     //GameObject dealer;
     private void Awake()
     {

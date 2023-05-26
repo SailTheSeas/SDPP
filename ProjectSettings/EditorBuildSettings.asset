@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Offline_Connect_Screen.unity
     guid: 47c74e01dcec1b84ca66669ae9faba00
+  - enabled: 1
+    path: Assets/Scenes/Offline_Scene_Chat.unity
+    guid: 8fc3fb593932c614eb2ed921f1cd4331
+  - enabled: 1
+    path: Assets/Scenes/Online_Scene_Chat.unity
+    guid: 170216cbb0409394883787324fd95abe
   m_configObjects: {}

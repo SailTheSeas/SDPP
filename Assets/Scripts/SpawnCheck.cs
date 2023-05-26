@@ -23,6 +23,10 @@ public class SpawnCheck : MonoBehaviour
 
     public void enterName()
     {
+        if(input.text.Length>=15)
+        {
+            Debug.Log("Name too long");
+        }
         playerName = input.text;
         input.text = " ";
         changeName();
