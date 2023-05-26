@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\PlayerTimeout.cs" />
     <Compile Include="Assets\Scripts\ChatBehaviour.cs" />
     <Compile Include="Assets\Scripts\PlayerType.cs" />
+    <Compile Include="Assets\Scripts\PlayerName.cs" />
     <Compile Include="Assets\Scripts\PlayerHand.cs" />
     <Compile Include="Assets\Scripts\PlayerActionsKevinTest.cs" />
     <Compile Include="Assets\Scripts\TableHand.cs" />
@@ -74,14 +75,13 @@
     <Compile Include="Assets\Scripts\LocalButtonCommands.cs" />
     <Compile Include="Assets\MyUnityScripts\RecordsLink.cs" />
     <Compile Include="Assets\Scripts\TestCardDisplay.cs" />
+    <Compile Include="Assets\Scripts\AddPlayerToMultiplayer.cs" />
     <Compile Include="Assets\MyUnityScripts\UserSignUp.cs" />
     <Compile Include="Assets\Scripts\ConnectionHUD.cs" />
     <Compile Include="Assets\Scripts\SpawnCheck.cs" />
     <Compile Include="Assets\Scripts\SetTag.cs" />
     <Compile Include="Assets\Scripts\PlayerActions.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\AddPlayerToMultiplayer.cs" />
-    <Compile Include="Assets\Scripts\PlayerName.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />
