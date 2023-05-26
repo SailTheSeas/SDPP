@@ -52,15 +52,20 @@ Using the command : sudo chown -R $USER:$USER (name-of-folder-containing php scr
 # setting up the database on myphp Admin
 all the php scripts have 
 ~~~
-Variables storing DB information
+// Variables storing DB information
+
 $servername = "localhost";
 $_userDB= "root";
 $_passwordDB = "root";
 $database = "pokergameDB";
+
 //Form data was sent from Unity with the POST method and is retrieved in PHP using POST.
+
 $username = $_POST["username"];
 $userpass = $_POST["userpass"];
+
 //Create Connection
+
 $conn = new mysqli($servername, $_userDB, $_passwordDB,$database);
 ~~~
 
