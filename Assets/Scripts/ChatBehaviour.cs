@@ -28,18 +28,6 @@ public class ChatBehaviour : NetworkBehaviour
 
 
     //KE - Used to fetch the player's username
-    private void Start()
-    {
-        
-    }
-    public override void OnStartAuthority()
-    {
-
-    }
-    private void Awake()
-    {
-        
-    }
 
 
     //KE - When a client clicks the send button, send the message in the inputfield to the server and clear the input field
@@ -56,7 +44,7 @@ public class ChatBehaviour : NetworkBehaviour
         CmdSpawnText(msg ,playerUsername);
     }
 
-
+    //Is called whenever a player does an action that needs to be displayed in the chat (raise, call, fold, allin)
     [Command(requiresAuthority = false)] public void UpdateMessageChat(string name, string action)
     {
         RpcChatUpdate(action, name, Color.red);

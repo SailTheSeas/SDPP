@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
 
+//KE - This script is used to overhaul the functionality needed from the NetworkManagerHUD.
+//The NetworkManagerHUD script is used at the beginning of projects to assure that there is a quick and convenient way to set up host/server/clients
+//The NetworkManagerHUD has been replaced because of its functionality became redundant (Joining as a host, and inputting an IP address)
+//Some of the functionality we wanted was incomplete - closing servers, and disconnecting clients.
+//It is worth noting that the showcase on Itch.io automatically kicks the clients when the server is stopped, and disconnects the clients when the tab is closed.
+
 public class ConnectionHUD : MonoBehaviour
 {
     [SerializeField] GameObject client;
@@ -19,16 +25,16 @@ public class ConnectionHUD : MonoBehaviour
         clientButton = client.GetComponent<Button>();
         //update.text = "";
         manager = GameObject.FindGameObjectWithTag("NetworkManager").GetComponent<NetworkManager>();
-        /*if (Application.platform == RuntimePlatform.WindowsPlayer|| Application.platform==RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsPlayer|| Application.platform==RuntimePlatform.WindowsEditor)
         {
-            ClientButton.SetActive(false);
+            client.SetActive(false);
             //ServerButton.SetActive(false);
             Debug.Log("I know you're playing this in the windows version of Unity");
         }
         if(Application.platform==RuntimePlatform.WebGLPlayer)
         {
-            ServerButton.SetActive(false);
-        }*/
+            server.SetActive(false);
+        }
         UpdateClientButton();
     }
     public void StartServer()

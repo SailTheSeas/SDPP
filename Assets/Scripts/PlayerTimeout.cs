@@ -4,6 +4,7 @@ using UnityEngine;
 using Mirror;
 using UnityEngine.UI;
 
+//KE - This script was supposed to be implemented more in the integration phase. It is supposed to 
 public class PlayerTimeout : NetworkBehaviour
 {
     public int timeAmount;
@@ -15,30 +16,34 @@ public class PlayerTimeout : NetworkBehaviour
     {
 
     }
-    /*public override void OnStartAuthority()
+
+    //KE- When the client joins the game, a timer will decrement, until it reaches zero, which is indicated to the player through a text component
+    public override void OnStartAuthority()
     {
-        Debug.Log(conn);
         // OnButtonPress();
         if (isLocalPlayer)
         {
-            Debug.Log("this isn't my item");
             coroutine = counter(timeAmount);
             StartCoroutine(coroutine);
             return;
         }
-    }*/
+    }
+
     public void PlayerTurn()
     {
         StartCoroutine(coroutine);
     }
-    // Update is called once per frame
-    /*void Update()
+    
+    //KE - Checks if the player inputs the spacebar. If they do, stop the timer
+    void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
             EndTurnTimer();
         }
-    }*/
+    }
+
+     
     public void EndTurnTimer()  //KE - I am hoping that the player will have to press a button to decide their action - this function will be added to the button to stop the timer for the player
     {
         StopCoroutine(coroutine);
@@ -71,13 +76,10 @@ public class PlayerTimeout : NetworkBehaviour
         Debug.Log("time up");
     }
     
-   /* public void OnButtonPress()
-    {
-        Debug.Log("OnButtonPress()");
-        
+    public void OnButtonPress()
+    {        
             // Send a command to the server to display the message
             CmdDisplayMessage("This is your special message!", connectionToClient);
-        
     }
 
     [Command]
@@ -96,5 +98,5 @@ public class PlayerTimeout : NetworkBehaviour
             // Display the message on the client who pressed the button
             Debug.Log(message);
         }
-    }*/
+    }
 }

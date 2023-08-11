@@ -4,22 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
 
+//KE - Unfinished networking/gameplay integration script
 
 //Unity Buttons cannot call from functions that already exist before the button has been instantiated in the scene.
-//This script is attached to the prefab that the button is on, so that the functions on the GameController and PlayerActions scripts can be called with the button during runtime
-//We can find specific gameobjects by reference 
+//This script is attached to the prefab that the button is on,
+//The functions on the GameController and PlayerActions scripts can be called with the button during runtime
 public class LocalButtonCommands : MonoBehaviour
 {
     GameController game;
     PlayerActions player;
     Button startGame;
 
+    //Fetches references to specific gameobjects that are present in the scene before the player can call them
     private void Start()
     {
         startGame=this.transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<Button>();
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         player = this.gameObject.GetComponent<PlayerActions>();
     }
+
+
     public void Raise()
     {
         player.raise();

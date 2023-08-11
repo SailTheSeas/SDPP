@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
+//KE -Integration script- This script is used to 
 public class DealerSelect : NetworkBehaviour
 {
     GameObject dealer;
@@ -10,7 +11,6 @@ public class DealerSelect : NetworkBehaviour
     GameObject playerActions;
     [SerializeField]
     PlayerActions thisPlayer;
-    // Start is called before the first frame update
     public override void OnStartAuthority()
     {
         this.gameObject.SetActive(true);

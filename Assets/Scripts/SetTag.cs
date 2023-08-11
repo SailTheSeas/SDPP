@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//KE - Integration script
+//KE - Sets the tag of the player. This is used to determine the order of turns and roles of the clients when they first connect
 public class SetTag : MonoBehaviour
 {
     public string player = "Player1";
     // Start is called before the first frame update
     GameController controller;
 
-    //GameObject dealer;
+    //KE - Called when the client connects, (called on the client)
     private void Awake()
     {
         SetPlayerTag();
         SetPlayer();
-        Debug.Log("kuhbjk");
-        /*dealer = this.transform.GetChild(1).GetChild(1).gameObject;
-        dealer.SetActive(false);*/
     }
+    //KE - Checks which tags are taken already - since this is a 4 player game, we only need to worry about there being 4 tags
     void SetPlayerTag()
     {
         controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
@@ -37,9 +37,9 @@ public class SetTag : MonoBehaviour
             player = "Player1";
         }
          this.gameObject.tag = player;
-        /*SetPlayer();*/
     }
 
+    //KE - communicates the tag and gameobject component info to the GameController script which handles turns and game logic
     void SetPlayer()
     {
         Debug.Log((this.gameObject.transform.GetChild(2).GetComponent<PlayerActions>()));

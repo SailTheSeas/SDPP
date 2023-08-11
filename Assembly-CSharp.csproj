@@ -57,31 +57,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CardFace.cs" />
-    <Compile Include="Assets\Scripts\Pot.cs" />
-    <Compile Include="Assets\Scripts\PlayerTimeout.cs" />
-    <Compile Include="Assets\Scripts\ChatBehaviour.cs" />
-    <Compile Include="Assets\Scripts\PlayerType.cs" />
-    <Compile Include="Assets\Scripts\PlayerName.cs" />
-    <Compile Include="Assets\Scripts\PlayerHand.cs" />
-    <Compile Include="Assets\Scripts\PlayerActionsKevinTest.cs" />
-    <Compile Include="Assets\Scripts\TableHand.cs" />
-    <Compile Include="Assets\Scripts\DealerSelect.cs" />
-    <Compile Include="Assets\MyUnityScripts\UserLogIn.cs" />
-    <Compile Include="Assets\MyUnityScripts\DBController.cs" />
-    <Compile Include="Assets\Scripts\PlayerBet.cs" />
     <Compile Include="Assets\ParrelSync\Examples\CustomArgumentExample.cs" />
     <Compile Include="Assets\Scripts\Card.cs" />
+    <Compile Include="Assets\Scripts\Pot.cs" />
     <Compile Include="Assets\Scripts\GameWin.cs" />
     <Compile Include="Assets\Scripts\LocalButtonCommands.cs" />
+    <Compile Include="Assets\Scripts\PlayerTimeout.cs" />
+    <Compile Include="Assets\Scripts\ChatBehaviour.cs" />
     <Compile Include="Assets\MyUnityScripts\RecordsLink.cs" />
+    <Compile Include="Assets\Scripts\PlayerType.cs" />
     <Compile Include="Assets\Scripts\TestCardDisplay.cs" />
+    <Compile Include="Assets\Scripts\PlayerName.cs" />
     <Compile Include="Assets\Scripts\AddPlayerToMultiplayer.cs" />
+    <Compile Include="Assets\Scripts\PlayerHand.cs" />
+    <Compile Include="Assets\Scripts\PlayerActionsKevinTest.cs" />
     <Compile Include="Assets\MyUnityScripts\UserSignUp.cs" />
+    <Compile Include="Assets\Scripts\TableHand.cs" />
     <Compile Include="Assets\Scripts\ConnectionHUD.cs" />
+    <Compile Include="Assets\Scripts\DealerSelect.cs" />
     <Compile Include="Assets\Scripts\SpawnCheck.cs" />
     <Compile Include="Assets\Scripts\SetTag.cs" />
+    <Compile Include="Assets\MyUnityScripts\UserLogIn.cs" />
     <Compile Include="Assets\Scripts\PlayerActions.cs" />
+    <Compile Include="Assets\MyUnityScripts\DBController.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\PlayerBet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />
@@ -319,23 +319,14 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.42f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Pdb.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.CecilX.Rocks">
       <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.CecilX.Pdb">
+      <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Pdb.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.CecilX">
       <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Core">
-      <HintPath>Assets\Mirror\Tests\Common\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NSubstitute">
-      <HintPath>Assets\Mirror\Tests\Common\NSubstitute.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions">
-      <HintPath>Assets\Mirror\Tests\Common\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
       <HintPath>Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Mdb.dll</HintPath>
@@ -821,10 +812,6 @@
     <ProjectReference Include="Mirror.Editor.csproj">
       <Project>{CB6C0E9F-9893-49A0-7D20-77D5000A0FD4}</Project>
       <Name>Mirror.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="WeaverTestExtraAssembly.csproj">
-      <Project>{8211A17D-C2D1-640E-948D-5133C3C56935}</Project>
-      <Name>WeaverTestExtraAssembly</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.CompilerSymbols.csproj">
       <Project>{C8877138-0635-4A9A-B4DE-AC7193EDAA77}</Project>
